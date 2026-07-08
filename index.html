@@ -8,20 +8,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream:#f2e8d5;
-    --cream-card:#f7f0e0;
-    --navy:#0a0d1f;
-    --navy-light:#12162e;
-    --text-dark:#1c1a15;
-    --muted:#6e6a5c;
-    --gold:#d4a24c;
-    --red:#c0392b;
-    --border:#d9c9a3;
+    --cream:#ffffff;
+    --cream-card:#f5f6f8;
+    --navy:#1c1e26;
+    --navy-light:#eef1f6;
+    --text-dark:#1c1e26;
+    --muted:#6b7280;
+    --gold:#2874f0;
+    --red:#ff9f00;
+    --border:#e2e5eb;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{
-    background:var(--navy);
-    color:var(--cream);
+    background:var(--cream);
+    color:var(--text-dark);
     font-family:'Poppins',sans-serif;
     min-height:100vh;
   }
@@ -48,7 +48,7 @@
   }
   h1 span{color:var(--gold);}
   header p{
-    color:#b8b4a8;
+    color:#5f6470;
     font-size:15px;
     max-width:520px;
     margin-bottom:18px;
@@ -58,9 +58,9 @@
     align-items:center;
     gap:8px;
     font-size:14px;
-    color:var(--cream);
+    color:var(--text-dark);
     background:var(--navy-light);
-    border:1px solid #2a3260;
+    border:1px solid #dfe3ea;
     padding:8px 14px;
     border-radius:999px;
   }
@@ -123,20 +123,20 @@
   .global-search-input{
     width:100%;
     background:var(--navy-light);
-    border:1px solid #2a3260;
+    border:1px solid #dfe3ea;
     border-radius:14px;
-    color:var(--cream);
+    color:var(--text-dark);
     font-family:'Poppins',sans-serif;
     font-size:15px;
     padding:16px 18px;
     outline:none;
     transition:border-color 0.15s ease;
   }
-  .global-search-input::placeholder{color:#8a86a0;}
+  .global-search-input::placeholder{color:#9aa0ac;}
   .global-search-input:focus{border-color:var(--gold);}
   .global-result-count{
     font-size:13px;
-    color:#8a86a0;
+    color:#6b7280;
     margin-top:10px;
   }
 
@@ -148,8 +148,8 @@
   .tab-btn{
     flex:1;
     background:var(--navy-light);
-    border:1px solid #2a3260;
-    color:#8a86a0;
+    border:1px solid #dfe3ea;
+    color:#6b7280;
     font-family:'Poppins',sans-serif;
     font-weight:600;
     font-size:14px;
@@ -250,14 +250,14 @@
     letter-spacing:0.04em;
     text-transform:uppercase;
     color:var(--navy);
-    background:#e8dfc8;
+    background:#eef1f6;
     padding:3px 8px;
     border-radius:6px;
     margin-bottom:12px;
   }
   .file-tag.apk{
-    color:#8a3324;
-    background:#f0d9d1;
+    color:#c85a00;
+    background:#fff3e0;
   }
   .file-name{
     font-size:17px;
@@ -341,7 +341,7 @@
 
   footer{
     text-align:center;
-    color:#8a86a0;
+    color:#6b7280;
     font-size:13px;
     padding:32px 24px;
     border-top:1px solid var(--navy-light);
@@ -363,7 +363,7 @@
     color:var(--gold);
   }
   .about-inner p{
-    color:#d8d4c8;
+    color:#4b5160;
     font-size:15px;
     line-height:1.8;
     margin-bottom:18px;

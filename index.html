@@ -1,484 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Download Ghar</title>
+<title>FileGhar — Notes & Apps</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#241f18;
-    --parchment:#f1e6cd;
-    --parchment-dark:#e4d3ac;
-    --indigo:#1f2a44;
-    --indigo-deep:#141b2e;
-    --stamp:#a8332b;
-    --gold:#bd9433;
-    --cream:#f7f1e3;
-    --line: rgba(36,31,24,0.18);
+    --cream:#f2e8d5;
+    --cream-card:#f7f0e0;
+    --navy:#0a0d1f;
+    --navy-light:#12162e;
+    --text-dark:#1c1a15;
+    --muted:#6e6a5c;
+    --gold:#d4a24c;
+    --red:#c0392b;
+    --border:#d9c9a3;
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box;margin:0;padding:0;}
   body{
-    background:var(--indigo-deep);
+    background:var(--navy);
     color:var(--cream);
-    font-family:'Noto Sans Devanagari','Noto Sans',sans-serif;
-    -webkit-font-smoothing:antialiased;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
   }
-  h1,h2,h3,.display{
-    font-family:'Baloo 2','Noto Sans Devanagari',sans-serif;
-  }
-  a{color:inherit;}
-
-  /* ---------- Hero ---------- */
-  .hero{
-    position:relative;
-    padding:64px 24px 88px;
-    background:
-      radial-gradient(ellipse at 20% -10%, rgba(189,148,51,0.18), transparent 55%),
-      linear-gradient(180deg, var(--indigo) 0%, var(--indigo-deep) 100%);
-    border-bottom: 6px solid var(--gold);
-    overflow:hidden;
-    text-align:center;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background-image: repeating-linear-gradient(0deg, transparent 0 38px, rgba(247,241,227,0.035) 38px 39px);
-    pointer-events:none;
+  header{
+    padding:48px 24px 32px;
+    max-width:1100px;
+    margin:0 auto;
+    border-bottom:1px solid var(--navy-light);
   }
   .eyebrow{
-    display:inline-block;
-    font-family:'IBM Plex Mono',monospace;
+    font-family:'JetBrains Mono',monospace;
     font-size:12px;
-    letter-spacing:.18em;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
     color:var(--gold);
-    border:1px solid rgba(189,148,51,0.5);
-    border-radius:999px;
-    padding:6px 16px;
-    margin-bottom:22px;
+    font-weight:500;
+    margin-bottom:12px;
   }
-  .hero h1{
-    font-size:clamp(38px,7vw,68px);
+  h1{
+    font-size:clamp(30px,6vw,48px);
     font-weight:800;
-    margin:0 0 14px;
-    line-height:1.08;
-    letter-spacing:.01em;
+    line-height:1.1;
+    margin-bottom:12px;
   }
-  .hero h1 span{color:var(--gold);}
-  .hero .byline{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    letter-spacing:.04em;
-    color:var(--gold);
-    margin:0 0 18px;
-  }
-  .hero p{
-    max-width:520px;
-    margin:0 auto 30px;
-    font-size:17px;
-    line-height:1.7;
-    color:rgba(247,241,227,0.78);
-  }
-  .hero-photo-wrap{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:18px;
-    flex-wrap:wrap;
-    margin-bottom:8px;
-  }
-  .hero-photo{
-    width:72px;
-    height:72px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid var(--gold);
-    box-shadow:0 4px 14px rgba(0,0,0,0.35);
-  }
-  .hero-title-block{
-    text-align:left;
-  }
-  .hero-title-block h1{
-    margin:0 0 6px;
-    text-align:left;
-  }
-  .hero-title-block .byline{
-    margin:0;
-    text-align:left;
-  }
-  @media (max-width:480px){
-    .hero-photo-wrap{flex-direction:column; text-align:center;}
-    .hero-title-block, .hero-title-block h1, .hero-title-block .byline{text-align:center;}
-  }
-  .search-wrap{
-    max-width:520px;
-    margin:0 auto;
-    display:flex;
-    gap:10px;
-  }
-  .search-wrap input{
-    flex:1;
-    padding:14px 18px;
-    border-radius:10px;
-    border:1px solid rgba(247,241,227,0.25);
-    background:rgba(20,27,46,0.55);
-    color:var(--cream);
+  h1 span{color:var(--gold);}
+  header p{
+    color:#b8b4a8;
     font-size:15px;
-    font-family:inherit;
+    max-width:520px;
+    margin-bottom:18px;
   }
-  .search-wrap input::placeholder{color:rgba(247,241,227,0.45);}
-  .search-wrap input:focus{outline:2px solid var(--gold); outline-offset:2px;}
-
-  /* ---------- Tabs ---------- */
-  .tabs{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin:-30px 20px 0;
-    position:relative;
-    z-index:2;
-  }
-  .tab{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
-    letter-spacing:.03em;
-    padding:12px 18px;
-    background:var(--parchment);
-    color:var(--ink);
-    border:1px solid var(--parchment-dark);
-    border-bottom:none;
-    border-radius:8px 8px 0 0;
-    cursor:pointer;
-    box-shadow:0 -2px 8px rgba(0,0,0,0.15);
-    transition:transform .15s ease, background .15s ease;
-    user-select:none;
-  }
-  .tab:hover{transform:translateY(-2px);}
-  .tab.active{
-    background:var(--cream);
-    color:var(--stamp);
-    font-weight:700;
-    box-shadow:0 -4px 12px rgba(0,0,0,0.2);
-  }
-  .tab:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
-
-  /* ---------- Ledger (main content) ---------- */
-  .ledger{
-    background:var(--parchment);
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px);
-    background-size: 100% 64px;
-    padding:36px 24px 90px;
-  }
-  .ledger-inner{max-width:820px; margin:0 auto;}
-  .ledger-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    border-bottom:2px solid var(--ink);
-    padding-bottom:10px;
-    margin-bottom:6px;
-    color:var(--ink);
-  }
-  .ledger-head h2{
-    font-size:22px;
-    margin:0;
-  }
-  .ledger-head .count{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    color:rgba(36,31,24,0.6);
-  }
-
-  .entry{
-    display:grid;
-    grid-template-columns:52px 1fr auto;
-    gap:16px;
-    align-items:center;
-    padding:18px 6px;
-    border-bottom:1px dashed var(--line);
-  }
-  .entry:last-child{border-bottom:none;}
-  .icon{
-    width:44px;height:44px;
-    border-radius:8px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:20px;
-    background:var(--indigo);
-    color:var(--gold);
-    flex-shrink:0;
-  }
-  .meta{color:var(--ink);}
-  .meta .name{
-    font-weight:600;
-    font-size:16px;
-    display:block;
-    margin-bottom:4px;
-  }
-  .meta .sub{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11.5px;
-    color:rgba(36,31,24,0.55);
-    letter-spacing:.02em;
-  }
-
-  /* the signature stamp button */
-  .stamp-btn{
-    position:relative;
+  .contact-line{
     display:inline-flex;
     align-items:center;
-    justify-content:center;
-    font-family:'IBM Plex Mono',monospace;
-    font-weight:700;
-    font-size:12.5px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--stamp);
-    background:var(--cream);
-    border:2.5px solid var(--stamp);
-    border-radius:6px;
-    padding:10px 18px;
-    cursor:pointer;
-    text-decoration:none;
-    transform:rotate(-3deg);
-    transition:transform .12s ease, background .12s ease, color .12s ease, box-shadow .12s ease;
-    white-space:nowrap;
-    box-shadow:0 3px 8px rgba(168,51,43,0.15);
-  }
-  .stamp-btn::after{
-    content:"";
-    position:absolute; inset:3px;
-    border:1px dotted rgba(168,51,43,0.55);
-    border-radius:3px;
-    pointer-events:none;
-  }
-  .stamp-btn:hover{
-    background:var(--stamp);
+    gap:8px;
+    font-size:14px;
     color:var(--cream);
-    transform:rotate(0deg) scale(1.04);
-    box-shadow:0 6px 14px rgba(168,51,43,0.3);
+    background:var(--navy-light);
+    border:1px solid #2a3260;
+    padding:8px 14px;
+    border-radius:999px;
   }
-  .stamp-btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .contact-line b{color:var(--gold);}
 
-  .empty{
-    text-align:center;
-    padding:50px 20px;
-    color:rgba(36,31,24,0.55);
-    font-size:14px;
-  }
-
-  footer{
-    text-align:center;
-    padding:26px 20px 40px;
-    color:rgba(247,241,227,0.4);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    background:var(--indigo-deep);
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:40px 24px 80px;
   }
 
-  @media (max-width:520px){
-    .entry{grid-template-columns:40px 1fr; row-gap:10px;}
-    .entry .icon{width:36px;height:36px;font-size:16px;}
-    .entry > .stamp-btn, .entry > button{
-      grid-column:1 / -1;
-      justify-self:start;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
-  }
-
-  /* ---------- Notice box ---------- */
-  .notice{
-    max-width:640px;
-    margin:0 auto 40px;
-    background:var(--parchment);
-    border:1px solid var(--parchment-dark);
-    border-radius:10px;
-    overflow:hidden;
-    text-align:left;
-  }
-  .notice-head{
+  /* Notices */
+  .notice-box{
     background:var(--gold);
-    color:var(--ink);
+    border-radius:14px;
+    overflow:hidden;
+    margin-bottom:36px;
+  }
+  .notice-title{
     font-weight:700;
-    font-size:14px;
-    padding:10px 16px;
+    font-size:15px;
+    color:var(--navy);
+    padding:14px 20px;
     display:flex;
     align-items:center;
     gap:8px;
   }
+  .notice-title::before{content:'⚠️';font-size:14px;}
   .notice-body{
-    padding:16px 20px;
-    color:var(--ink);
+    background:var(--cream);
+    padding:20px;
   }
   .notice-body ol{
-    margin:0;
-    padding-left:20px;
+    list-style:none;
+    counter-reset:notice;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
   }
   .notice-body li{
-    margin-bottom:10px;
+    counter-increment:notice;
     font-size:14px;
-    line-height:1.6;
+    color:var(--text-dark);
+    padding-left:26px;
+    position:relative;
+    line-height:1.5;
   }
-  .notice-body li:last-child{margin-bottom:0;}
-
-  /* ---------- Links section ---------- */
-  .links-section{
-    max-width:640px;
-    margin:0 auto 40px;
-    background:var(--parchment);
-    border:1px solid var(--parchment-dark);
-    border-radius:10px;
-    overflow:hidden;
-    text-align:left;
-  }
-  .links-head{
-    background:var(--indigo);
-    color:var(--gold);
+  .notice-body li::before{
+    content:counter(notice) '.';
+    position:absolute;
+    left:0;
     font-weight:700;
+    color:var(--navy);
+  }
+
+  /* Tabs */
+  .tabs{
+    display:flex;
+    gap:6px;
+    margin-bottom:0;
+  }
+  .tab-btn{
+    flex:1;
+    background:var(--navy-light);
+    border:1px solid #2a3260;
+    color:#8a86a0;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
     font-size:14px;
-    padding:12px 18px;
+    padding:14px 10px;
+    border-radius:12px 12px 0 0;
+    cursor:pointer;
     display:flex;
     align-items:center;
+    justify-content:center;
     gap:8px;
+    transition:color 0.15s ease, background 0.15s ease;
   }
-  .links-body{
-    padding:10px 8px;
+  .tab-btn.active{
+    color:var(--red);
+    background:var(--cream);
+  }
+  .tab-panel{
+    background:var(--cream);
+    border-radius:0 0 16px 16px;
+    padding:28px 20px;
+    margin-bottom:40px;
+    color:var(--text-dark);
+  }
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .search-wrap{margin-bottom:8px;}
+  .search-input{
+    width:100%;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    color:var(--text-dark);
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+    padding:14px 16px;
+    outline:none;
+    transition:border-color 0.15s ease;
+  }
+  .search-input::placeholder{color:var(--muted);}
+  .search-input:focus{border-color:var(--gold);}
+  .result-count{
+    font-size:13px;
+    color:var(--muted);
+    margin:10px 0 20px;
+  }
+
+  .section-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--text-dark);
+  }
+  .file-count{
+    font-size:13px;
+    color:var(--muted);
+    font-weight:400;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    text-decoration:none;
+    display:block;
+    color:var(--text-dark);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 28px rgba(20,26,53,0.14);
+  }
+  .file-icon{
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    margin-bottom:14px;
+    background:var(--navy);
+  }
+  .file-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--navy);
+    background:#e8dfc8;
+    padding:3px 8px;
+    border-radius:6px;
+    margin-bottom:12px;
+  }
+  .file-tag.apk{
+    color:#8a3324;
+    background:#f0d9d1;
+  }
+  .file-name{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:6px;
+    line-height:1.3;
+  }
+  .file-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:18px;
+  }
+  .download-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    width:100%;
+    justify-content:center;
+    background:var(--navy);
+    color:#fff;
+    font-weight:600;
+    font-size:14px;
+    border-radius:10px;
+    text-decoration:none;
+    padding:11px 0;
+    transition:background 0.15s ease;
+    border:none;
+    cursor:pointer;
+  }
+  .download-btn:hover{background:var(--red);}
+  .empty{
+    color:var(--muted);
+    font-size:14px;
+    padding:24px;
+    border:1px dashed var(--border);
+    border-radius:12px;
+    text-align:center;
+  }
+
+  /* Links */
+  .links-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
   }
   .link-row{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
     gap:12px;
-    padding:12px 12px;
-    border-bottom:1px dashed rgba(36,31,24,0.15);
-    text-decoration:none;
   }
   .link-row:last-child{border-bottom:none;}
-  .link-info{color:var(--ink); overflow:hidden;}
-  .link-info .lname{
-    display:block;
-    font-weight:600;
-    font-size:15px;
-    margin-bottom:2px;
-  }
-  .link-info .lurl{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:rgba(36,31,24,0.5);
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    display:block;
-    max-width:100%;
-  }
-  .link-open{
-    flex-shrink:0;
-    font-family:'IBM Plex Mono',monospace;
+  .link-name{
     font-weight:700;
-    font-size:11.5px;
-    letter-spacing:.05em;
-    text-transform:uppercase;
-    color:var(--indigo);
-    background:transparent;
-    border:2px solid var(--indigo);
-    border-radius:6px;
-    padding:7px 14px;
+    font-size:16px;
+    margin-bottom:4px;
+    color:var(--text-dark);
+  }
+  .link-desc{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .open-btn{
+    flex-shrink:0;
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+    background:none;
+    border-radius:8px;
+    font-weight:700;
+    font-size:13px;
+    padding:9px 18px;
+    text-decoration:none;
     white-space:nowrap;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .open-btn:hover{background:var(--navy);color:#fff;}
+
+  footer{
+    text-align:center;
+    color:#8a86a0;
+    font-size:13px;
+    padding:32px 24px;
+    border-top:1px solid var(--navy-light);
   }
 
-  /* ---------- About section ---------- */
-  .about{
-    max-width:640px;
-    margin:0 auto 40px;
-    padding:0 24px;
+  .about-section{
+    background:var(--navy-light);
+    padding:56px 24px;
+  }
+  .about-inner{
+    max-width:700px;
+    margin:0 auto;
     text-align:center;
-    color:rgba(247,241,227,0.85);
   }
-  .about h2{
-    font-family:'Baloo 2',sans-serif;
-    font-size:24px;
-    color:var(--cream);
-    margin-bottom:14px;
+  .about-title{
+    font-size:clamp(22px,4vw,30px);
+    font-weight:800;
+    margin-bottom:24px;
+    color:var(--gold);
   }
-  .about p{
+  .about-inner p{
+    color:#d8d4c8;
     font-size:15px;
     line-height:1.8;
-    margin-bottom:14px;
+    margin-bottom:18px;
   }
-
-  /* ---------- How it works ---------- */
-  .how{
-    max-width:760px;
-    margin:0 auto 50px;
-    padding:0 24px;
-  }
-  .how h2{
-    font-family:'Baloo 2',sans-serif;
-    font-size:24px;
-    color:var(--cream);
-    text-align:center;
-    margin-bottom:28px;
-  }
-  .how-steps{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:16px;
-  }
-  .how-step{
-    background:rgba(247,241,227,0.06);
-    border:1px solid rgba(189,148,51,0.3);
-    border-radius:10px;
-    padding:22px 16px;
-    text-align:center;
-  }
-  .how-step .num{
-    font-family:'IBM Plex Mono',monospace;
-    color:var(--gold);
-    font-size:13px;
-    letter-spacing:.1em;
-    margin-bottom:10px;
-  }
-  .how-step .icon{
-    font-size:26px;
-    margin-bottom:10px;
-  }
-  .how-step p{
-    color:rgba(247,241,227,0.8);
-    font-size:13.5px;
-    line-height:1.6;
-    margin:0;
-  }
-  @media (max-width:640px){
-    .how-steps{grid-template-columns:1fr;}
-  }
+  .about-inner p:last-child{margin-bottom:0;}
+  .about-inner b{color:var(--gold);font-weight:600;}
 </style>
 </head>
 <body>
 
-  <section class="hero">
-    <span class="eyebrow">SUNNY BOSS</span>
-    <div class="hero-photo-wrap">
-      <div class="hero-title-block">
-        <h1>Download <span>Ghar</span></h1>
-        <p class="byline">Founder by Surya Sunny</p>
-      </div>
-      <img class="hero-photo" src="my-photo.jpg" alt="Sunny">
-    </div>
-    <p>Notes, apps and files all in one place — just search, stamp it, and download.</p>
-    <div class="search-wrap">
-      <input id="searchInput" type="text" placeholder="Search a file... e.g. 'History Notes'">
-    </div>
-  </section>
+<header>
+  <div class="eyebrow">File Locker</div>
+  <h1>Apni Files, <span>Ek Jagah.</span></h1>
+  <p>Notes, PDFs aur APKs — sab ek jagah, search karke turant dhoondo.</p>
+  <div class="contact-line">📞 Contact: <b>7808245695</b> — Surya Sunny</div>
+</header>
 
-  <div class="notice">
-    <div class="notice-head">⚠️ महत्वपूर्ण सूचना</div>
+<main>
+
+  <!-- Important Notices -->
+  <div class="notice-box">
+    <div class="notice-title">महत्वपूर्ण सूचना</div>
     <div class="notice-body">
       <ol>
         <li>यह वेबसाइट सन्नी द्वारा सभी विद्यार्थियों व उपयोगकर्ताओं की सुविधा के लिए तैयार की गई है।</li>
@@ -489,173 +373,213 @@
     </div>
   </div>
 
-  <div class="links-section">
-    <div class="links-head">🔗 महत्वपूर्ण लिंक्स</div>
-    <div class="links-body" id="linksBody"></div>
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('apps')" id="tabBtnApps">📱 Apps/APK</button>
+    <button class="tab-btn" onclick="switchTab('links')" id="tabBtnLinks">🔗 Links</button>
+    <button class="tab-btn" onclick="switchTab('notes')" id="tabBtnNotes">📘 Notes/PDF</button>
   </div>
 
-  <div class="tabs" id="tabs">
-    <div class="tab active" data-cat="apps">📱 Apps/APK</div>
-    <div class="tab" data-cat="notes">📘 Notes/PDF</div>
-  </div>
+  <!-- Apps Panel -->
+  <div class="tab-panel active" id="panelApps">
 
-
-  <section class="ledger">
-    <div class="ledger-inner">
-      <div class="ledger-head">
-        <h2 id="sectionTitle">Register — All Files</h2>
-        <span class="count" id="countLabel"></span>
-      </div>
-      <div id="entryList"></div>
-      <div class="empty" id="emptyState" style="display:none;">Nothing found — try a different name.</div>
+    <div class="search-wrap">
+      <input
+        type="text"
+        class="search-input"
+        id="searchApps"
+        placeholder="App search karo..."
+        oninput="filterFiles('apps')"
+      >
     </div>
-  </section>
+    <div class="result-count" id="countApps"></div>
 
-  <section class="about">
-    <h2>यह वेबसाइट क्यों बनाई गई?</h2>
-    <p>पढ़ाई के दौरान सही notes, ज़रूरी apps और काम की फ़ाइलें ढूँढना अक्सर मुश्किल हो जाता है। इसी परेशानी को दूर करने के लिए "डाउनलोड घर" बनाया गया है — एक जगह, जहाँ सब कुछ आसानी से मिल जाए।</p>
+    <div class="section-title">
+      Register — Apps & APK
+      <span class="file-count" id="totalApps"></span>
+    </div>
+
+    <div class="grid" id="gridApps">
+
+      <a class="card" data-name="CapCut by Sunny"
+        href="download.html?name=CapCut%20by%20Sunny&type=APK&size=194%20MB&extra=Video%20Editor&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fci1f5fci03e60im%2FCapCut_by_sunny.apk%2Ffile">
+        <div class="file-icon">🎞️</div>
+        <span class="file-tag apk">APK</span>
+        <div class="file-name">CapCut by Sunny</div>
+        <div class="file-meta">194 MB · Video Editor</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <a class="card" data-name="Remini by Sunny"
+        href="download.html?name=Remini%20by%20Sunny&type=APK&size=153%20MB&extra=Photo%20Enhancer&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fcx55ibpp0e8prtg%2FRemini_by_Sunny.apk%2Ffile">
+        <div class="file-icon">✨</div>
+        <span class="file-tag apk">APK</span>
+        <div class="file-name">Remini by Sunny</div>
+        <div class="file-meta">153 MB · Photo Enhancer</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <a class="card" data-name="YouTube by Sunny"
+        href="download.html?name=YouTube%20by%20Sunny&type=APK&size=21%20MB&extra=Video%20App&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2F53s53a02413z334%2Fyoutube_by_sunny.apk%2Ffile">
+        <div class="file-icon">▶️</div>
+        <span class="file-tag apk">APK</span>
+        <div class="file-name">YouTube by Sunny</div>
+        <div class="file-meta">21 MB · Video App</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <a class="card" data-name="Free Cricket APK — Cricfy"
+        href="download.html?name=Free%20Cricket%20APK%20%E2%80%94%20Cricfy&type=APK&size=17%20MB&extra=v6.8%20%C2%B7%20Live%20Cricket&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Ftl3ggfx54plxfcc%2FCricfy-v6.8-latest-cricfytvap.net.apk%2Ffile">
+        <div class="file-icon">🏏</div>
+        <span class="file-tag apk">APK</span>
+        <div class="file-name">Free Cricket APK — Cricfy</div>
+        <div class="file-meta">17 MB · v6.8 · Live Cricket</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <!-- Naya APK yahan add karo, is card ko copy karke -->
+
+    </div>
+
+    <div class="empty" id="emptyApps" style="display:none;">
+      Koi file match nahi hui. Kuch aur try karo.
+    </div>
+  </div>
+
+  <!-- Links Panel -->
+  <div class="tab-panel" id="panelLinks">
+
+    <div class="section-title">
+      Important Links
+      <span class="file-count" id="totalLinks"></span>
+    </div>
+
+    <div class="links-box" id="gridLinks">
+      <div class="link-row">
+        <div>
+          <div class="link-name">LNMU 2nd Semester</div>
+          <div class="link-desc">Student login portal</div>
+        </div>
+        <a href="#" class="open-btn">OPEN →</a>
+      </div>
+      <div class="link-row">
+        <div>
+          <div class="link-name">NSP Scholarship Portal</div>
+          <div class="link-desc">National Scholarship</div>
+        </div>
+        <a href="#" class="open-btn">OPEN →</a>
+      </div>
+      <!-- Naya link yahan add karo, is link-row ko copy karke -->
+    </div>
+  </div>
+
+  <!-- Notes Panel -->
+  <div class="tab-panel" id="panelNotes">
+
+    <div class="search-wrap">
+      <input
+        type="text"
+        class="search-input"
+        id="searchNotes"
+        placeholder="Notes search karo..."
+        oninput="filterFiles('notes')"
+      >
+    </div>
+    <div class="result-count" id="countNotes"></div>
+
+    <div class="section-title">
+      Register — Notes & PDF
+      <span class="file-count" id="totalNotes"></span>
+    </div>
+
+    <div class="grid" id="gridNotes">
+
+      <a class="card" data-name="Class 10 Maths — Full Notes"
+        href="download.html?name=Class%2010%20Maths%20%E2%80%94%20Full%20Notes&type=PDF&size=4.2%20MB&extra=Hindi&link=%23">
+        <div class="file-icon">📘</div>
+        <span class="file-tag">PDF</span>
+        <div class="file-name">Class 10 Maths — Full Notes</div>
+        <div class="file-meta">4.2 MB · Hindi</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <a class="card" data-name="Indian Polity — Samvidhan Notes"
+        href="download.html?name=Indian%20Polity%20%E2%80%94%20Samvidhan%20Notes&type=PDF&size=2.8%20MB&extra=Hindi&link=%23">
+        <div class="file-icon">📘</div>
+        <span class="file-tag">PDF</span>
+        <div class="file-name">Indian Polity — Samvidhan Notes</div>
+        <div class="file-meta">2.8 MB · Hindi</div>
+        <span class="download-btn">View & Download</span>
+      </a>
+
+      <!-- Naya note yahan add karo, is card ko copy karke -->
+
+    </div>
+
+    <div class="empty" id="emptyNotes" style="display:none;">
+      Koi file match nahi hui. Kuch aur try karo.
+    </div>
+  </div>
+
+</main>
+
+<div class="about-section">
+  <div class="about-inner">
+    <div class="about-title">यह वेबसाइट क्यों बनाई गई?</div>
+    <p>पढ़ाई के दौरान सही notes, ज़रूरी apps और काम की फ़ाइलें ढूँढना अक्सर मुश्किल हो जाता है। इसी परेशानी को दूर करने के लिए <b>"डाउनलोड घर"</b> बनाया गया है — एक जगह, जहाँ सब कुछ आसानी से मिल जाए।</p>
     <p>यहाँ जो भी फ़ाइलें डाली जाती हैं, वो सन्नी द्वारा हाथ से चुनी और जोड़ी जाती हैं, ताकि सिर्फ काम की चीज़ें ही आपको मिलें — बेकार भरमार नहीं।</p>
-  </section>
+  </div>
+</div>
 
-  <section class="how">
-    <h2>कैसे इस्तेमाल करें</h2>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="num">STEP 01</div>
-        <div class="icon">🔍</div>
-        <p>ऊपर टैब या सर्च बार से अपनी ज़रूरत की फ़ाइल ढूँढो — Notes, Apps या Photos/Videos में से चुनो।</p>
-      </div>
-      <div class="how-step">
-        <div class="num">STEP 02</div>
-        <div class="icon">🖋️</div>
-        <p>फ़ाइल मिल जाए तो उसके सामने बना "Get File" स्टैम्प बटन दबाओ।</p>
-      </div>
-      <div class="how-step">
-        <div class="num">STEP 03</div>
-        <div class="icon">⬇️</div>
-        <p>नया पेज खुलेगा — वहाँ "Download Now" दबाओ, फ़ाइल आपके डिवाइस में सेव हो जाएगी।</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>Made with — Download Ghar · v1 · Demo Design</footer>
+<footer>
+  © 2026 FileGhar — Sab files apni responsibility par download karein.
+</footer>
 
 <script>
-  // Sample/placeholder data — real files/links yahan replace karni hain
-  const files = [
-    {cat:"notes", icon:"📘", name:"Polity Notes.pdf", sub:"PDF · Polity-notes.pdf", file:"Polity-notes.pdf"},
-    {cat:"apps", icon:"📱", name:"Remini by Sunny.apk", sub:"APK · Remini by Sunny.apk", file:"https://www.mediafire.com/file/cx55ibpp0e8prtg/Remini+by+Sunny.apk/file"},
-    {cat:"apps", icon:"📱", name:"CapCut by Sunny.apk", sub:"APK · CapCut by Sunny.apk", file:"https://www.mediafire.com/file/ci1f5fci03e60im/CapCut+by+sunny.apk/file"},
-    {cat:"apps", icon:"📱", name:"Youtube by Sunny.apk", sub:"APK · Youtube by Sunny.apk", file:"https://www.mediafire.com/file/53s53a02413z334/youtube+by+sunny.apk/file"},
-    {cat:"apps", icon:"📱", name:"Cricfy tv.apk", sub:"APK · Cricfy tv.apk", file:"https://www.mediafire.com/file/tl3ggfx54plxfcc/Cricfy-v6.8-latest-cricfytvap.net.apk/file"},
-  ];
-
-  const titles = {
-    notes: "Register — Notes & PDF",
-    apps: "Register — Apps & APK"
-  };
-
-  const tabs = document.querySelectorAll(".tab");
-  const entryList = document.getElementById("entryList");
-  const countLabel = document.getElementById("countLabel");
-  const sectionTitle = document.getElementById("sectionTitle");
-  const emptyState = document.getElementById("emptyState");
-  const searchInput = document.getElementById("searchInput");
-
-  let activeCat = "apps";
-
-  function render(){
-    const q = searchInput.value.trim().toLowerCase();
-    const filtered = files.filter(f =>
-      f.cat === activeCat &&
-      f.name.toLowerCase().includes(q)
-    );
-
-    sectionTitle.textContent = titles[activeCat];
-    countLabel.textContent = filtered.length + " files";
-    entryList.innerHTML = "";
-
-    if(filtered.length === 0){
-      emptyState.style.display = "block";
-      return;
-    }
-    emptyState.style.display = "none";
-
-    filtered.forEach(f => {
-      const row = document.createElement("div");
-      row.className = "entry";
-      let btnHtml;
-      if(f.url){
-        btnHtml = `<a class="stamp-btn" href="${f.url}" target="_blank" rel="noopener noreferrer">Open Link</a>`;
-      } else if(f.file){
-        const params = new URLSearchParams({
-          file: f.file,
-          name: f.name,
-          sub: f.sub,
-          icon: f.icon
-        });
-        btnHtml = `<a class="stamp-btn" href="download.html?${params.toString()}">Get File</a>`;
-      } else {
-        btnHtml = `<button class="stamp-btn" type="button">Get File</button>`;
-      }
-      row.innerHTML = `
-        <div class="icon">${f.icon}</div>
-        <div class="meta">
-          <span class="name">${f.name}</span>
-          <span class="sub">${f.sub}</span>
-        </div>
-        ${btnHtml}
-      `;
-      if(!f.file && !f.url){
-        row.querySelector(".stamp-btn").addEventListener("click", () => {
-          alert("This is a demo — the real file link needs to be added here (like a Google Drive link).");
-        });
-      }
-      entryList.appendChild(row);
-    });
+  function switchTab(tab){
+    document.getElementById('panelNotes').classList.toggle('active', tab === 'notes');
+    document.getElementById('panelApps').classList.toggle('active', tab === 'apps');
+    document.getElementById('panelLinks').classList.toggle('active', tab === 'links');
+    document.getElementById('tabBtnNotes').classList.toggle('active', tab === 'notes');
+    document.getElementById('tabBtnApps').classList.toggle('active', tab === 'apps');
+    document.getElementById('tabBtnLinks').classList.toggle('active', tab === 'links');
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      activeCat = tab.dataset.cat;
-      render();
+  function filterFiles(type){
+    const searchId = type === 'notes' ? 'searchNotes' : 'searchApps';
+    const gridId = type === 'notes' ? 'gridNotes' : 'gridApps';
+    const emptyId = type === 'notes' ? 'emptyNotes' : 'emptyApps';
+    const countId = type === 'notes' ? 'countNotes' : 'countApps';
+
+    const query = document.getElementById(searchId).value.trim().toLowerCase();
+    const cards = document.querySelectorAll('#' + gridId + ' .card');
+    const emptyEl = document.getElementById(emptyId);
+    const countEl = document.getElementById(countId);
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      const match = name.includes(query);
+      card.style.display = match ? '' : 'none';
+      if(match) visibleCount++;
     });
-  });
 
-  searchInput.addEventListener("input", render);
-
-  render();
-
-  // ---------- Important Links ----------
-  // Naya link add karne ke liye is pattern me ek line copy-paste karo:
-  // {name:"Link ka naam", url:"https://example.com", note:"chhota description"},
-  const links = [
-    {name:"LNMU 2nd Semester", url:"https://lnmuniversity.com/lnmuexama_2529/Home/StudentLogin_2nd_sem", note:"Student login portal"},
-    {name:"NSP Scholarship Portal", url:"https://scholarships.gov.in", note:"National Scholarship"},
-  ];
-
-  const linksBody = document.getElementById("linksBody");
-  if(links.length === 0){
-    linksBody.innerHTML = `<div class="link-row"><div class="link-info"><span class="lname">Koi link abhi nahi hai</span></div></div>`;
-  } else {
-    links.forEach(l => {
-      const row = document.createElement("a");
-      row.className = "link-row";
-      row.href = l.url;
-      row.target = "_blank";
-      row.rel = "noopener noreferrer";
-      row.innerHTML = `
-        <div class="link-info">
-          <span class="lname">${l.name}</span>
-          <span class="lurl">${l.note || l.url}</span>
-        </div>
-        <span class="link-open">Open →</span>
-      `;
-      linksBody.appendChild(row);
-    });
+    emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
+    countEl.textContent = query
+      ? visibleCount + ' file(s) mili "' + document.getElementById(searchId).value + '" ke liye'
+      : '';
   }
+
+  function updateTotals(){
+    document.getElementById('totalNotes').textContent =
+      document.querySelectorAll('#gridNotes .card').length + ' files';
+    document.getElementById('totalApps').textContent =
+      document.querySelectorAll('#gridApps .card').length + ' files';
+    document.getElementById('totalLinks').textContent =
+      document.querySelectorAll('#gridLinks .link-row').length + ' links';
+  }
+  updateTotals();
 </script>
+
 </body>
 </html>

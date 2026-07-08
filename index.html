@@ -117,6 +117,29 @@
   }
 
   /* Tabs */
+  .global-search-wrap{
+    margin-bottom:20px;
+  }
+  .global-search-input{
+    width:100%;
+    background:var(--navy-light);
+    border:1px solid #2a3260;
+    border-radius:14px;
+    color:var(--cream);
+    font-family:'Poppins',sans-serif;
+    font-size:15px;
+    padding:16px 18px;
+    outline:none;
+    transition:border-color 0.15s ease;
+  }
+  .global-search-input::placeholder{color:#8a86a0;}
+  .global-search-input:focus{border-color:var(--gold);}
+  .global-result-count{
+    font-size:13px;
+    color:#8a86a0;
+    margin-top:10px;
+  }
+
   .tabs{
     display:flex;
     gap:6px;
@@ -373,6 +396,17 @@
     </div>
   </div>
 
+  <div class="global-search-wrap">
+    <input
+      type="text"
+      class="global-search-input"
+      id="globalSearch"
+      placeholder="🔍 Sab kuch search karo — apps, notes, links..."
+      oninput="globalFilter()"
+    >
+    <div class="global-result-count" id="globalResultCount"></div>
+  </div>
+
   <!-- Tabs -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('apps')" id="tabBtnApps">📱 Apps/APK</button>
@@ -579,6 +613,55 @@
       document.querySelectorAll('#gridLinks .link-row').length + ' links';
   }
   updateTotals();
+
+  function globalFilter(){
+    const query = document.getElementById('globalSearch').value.trim().toLowerCase();
+    const countEl = document.getElementById('globalResultCount');
+    const tabsEl = document.querySelector('.tabs');
+    let totalVisible = 0;
+
+    if(query === ''){
+      // Restore normal tab behavior
+      tabsEl.style.display = '';
+      document.querySelectorAll('.tab-panel').forEach(p => p.style.display = '');
+      switchTab('apps');
+      countEl.textContent = '';
+      // reset any per-tab search filters too
+      document.querySelectorAll('.card').forEach(c => c.style.display = '');
+      document.querySelectorAll('.link-row').forEach(r => r.style.display = '');
+      document.getElementById('emptyApps').style.display = 'none';
+      document.getElementById('emptyNotes').style.display = 'none';
+      return;
+    }
+
+    // Show all panels at once while searching
+    tabsEl.style.display = 'none';
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.style.display = 'block';
+      p.classList.add('active');
+    });
+
+    document.querySelectorAll('#gridApps .card, #gridNotes .card').forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      const match = name.includes(query);
+      card.style.display = match ? '' : 'none';
+      if(match) totalVisible++;
+    });
+
+    document.querySelectorAll('#gridLinks .link-row').forEach(row => {
+      const name = row.querySelector('.link-name').textContent.toLowerCase();
+      const match = name.includes(query);
+      row.style.display = match ? '' : 'none';
+      if(match) totalVisible++;
+    });
+
+    document.getElementById('emptyApps').style.display =
+      document.querySelectorAll('#gridApps .card[style="display: none;"]').length === document.querySelectorAll('#gridApps .card').length ? 'block' : 'none';
+    document.getElementById('emptyNotes').style.display =
+      document.querySelectorAll('#gridNotes .card[style="display: none;"]').length === document.querySelectorAll('#gridNotes .card').length ? 'block' : 'none';
+
+    countEl.textContent = totalVisible + ' result(s) mile "' + document.getElementById('globalSearch').value + '" ke liye';
+  }
 </script>
 
 </body>

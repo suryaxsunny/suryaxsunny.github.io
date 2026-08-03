@@ -3,675 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FileGhar — Notes & Apps</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Sunny — Notes & Apps</title>
 <style>
   :root{
-    --cream:#ffffff;
-    --cream-card:#f5f6f8;
-    --navy:#1c1e26;
-    --navy-light:#eef1f6;
-    --text-dark:#1c1e26;
-    --muted:#6b7280;
-    --gold:#2874f0;
-    --red:#ff9f00;
-    --border:#e2e5eb;
+    --blue-dark:#1a2b6d;
+    --blue-mid:#2563eb;
+    --blue-light:#38bdf8;
+    --bg:#f4f5f9;
+    --card:#ffffff;
+    --text-dark:#111827;
+    --text-muted:#6b7280;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
+  *{box-sizing:border-box; margin:0; padding:0;}
   body{
-    background:var(--cream);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--bg);
     color:var(--text-dark);
-    font-family:'Poppins',sans-serif;
-    min-height:100vh;
+    padding-bottom:90px;
   }
+
+  /* Header */
   header{
-    padding:48px 24px 32px;
-    max-width:1100px;
-    margin:0 auto;
-    border-bottom:1px solid var(--navy-light);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px;
+    background:#fff;
   }
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--gold);
-    font-weight:500;
-    margin-bottom:12px;
+  header .menu-icon, header .profile-icon{
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    border-radius:12px; background:#f1f2f6; font-size:20px; cursor:pointer;
   }
-  h1{
-    font-size:clamp(30px,6vw,48px);
+  .logo{
+    display:flex; align-items:center; gap:6px; font-weight:800; font-size:20px;
+    color:var(--blue-dark);
+  }
+  .logo span.plus{color:var(--blue-mid); font-size:22px;}
+
+  /* Ticker */
+  .ticker-wrap{
+    background:#0b0f19; color:#fff; overflow:hidden; white-space:nowrap;
+    padding:10px 0;
+  }
+  .ticker{
+    display:inline-block; padding-left:100%;
+    animation:scroll-left 16s linear infinite;
+    font-size:13px; font-weight:600; letter-spacing:0.5px;
+  }
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+
+  /* Hero */
+  .hero{ text-align:center; padding:40px 20px 20px; }
+  .hero h1{
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
     font-weight:800;
+    font-size:44px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    background:linear-gradient(90deg, var(--blue-mid), var(--blue-dark));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     line-height:1.1;
-    margin-bottom:12px;
   }
-  h1 span{color:var(--gold);}
-  header p{
-    color:#5f6470;
-    font-size:15px;
-    max-width:520px;
-    margin-bottom:18px;
-  }
-  .contact-line{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:14px;
-    color:var(--text-dark);
-    background:var(--navy-light);
-    border:1px solid #dfe3ea;
-    padding:8px 14px;
-    border-radius:999px;
-  }
-  .contact-line b{color:var(--gold);}
-
-  main{
-    max-width:1100px;
-    margin:0 auto;
-    padding:40px 24px 80px;
-  }
-
-  /* Notices */
-  .notice-box{
-    background:var(--gold);
-    border-radius:14px;
-    overflow:hidden;
-    margin-bottom:36px;
-  }
-  .notice-title{
-    font-weight:700;
-    font-size:15px;
-    color:var(--navy);
-    padding:14px 20px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .notice-title::before{content:'⚠️';font-size:14px;}
-  .notice-body{
-    background:var(--cream);
-    padding:20px;
-  }
-  .notice-body ol{
-    list-style:none;
-    counter-reset:notice;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-  }
-  .notice-body li{
-    counter-increment:notice;
-    font-size:14px;
-    color:var(--text-dark);
-    padding-left:26px;
-    position:relative;
-    line-height:1.5;
-  }
-  .notice-body li::before{
-    content:counter(notice) '.';
-    position:absolute;
-    left:0;
-    font-weight:700;
-    color:var(--navy);
-  }
-
-  /* Tabs */
-  .global-search-wrap{
-    margin-bottom:20px;
-  }
-  .global-search-input{
-    width:100%;
-    background:var(--navy-light);
-    border:1px solid #dfe3ea;
-    border-radius:14px;
-    color:var(--text-dark);
-    font-family:'Poppins',sans-serif;
-    font-size:15px;
-    padding:16px 18px;
-    outline:none;
-    transition:border-color 0.15s ease;
-  }
-  .global-search-input::placeholder{color:#9aa0ac;}
-  .global-search-input:focus{border-color:var(--gold);}
-  .global-result-count{
-    font-size:13px;
-    color:#6b7280;
-    margin-top:10px;
-  }
-
-  .tabs{
-    display:flex;
-    gap:6px;
-    margin-bottom:0;
-  }
-  .tab-btn{
-    flex:1;
-    background:var(--navy-light);
-    border:1px solid #dfe3ea;
-    color:#6b7280;
-    font-family:'Poppins',sans-serif;
-    font-weight:600;
-    font-size:14px;
-    padding:14px 10px;
-    border-radius:12px 12px 0 0;
-    cursor:pointer;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    transition:color 0.15s ease, background 0.15s ease;
-  }
-  .tab-btn.active{
-    color:var(--red);
-    background:var(--cream);
-  }
-  .tab-panel{
-    background:var(--cream);
-    border-radius:0 0 16px 16px;
-    padding:28px 20px;
-    margin-bottom:40px;
-    color:var(--text-dark);
-  }
-  .tab-panel{display:none;}
-  .tab-panel.active{display:block;}
-
-  .search-wrap{margin-bottom:8px;}
-  .search-input{
-    width:100%;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:10px;
-    color:var(--text-dark);
-    font-family:'Poppins',sans-serif;
-    font-size:15px;
-    padding:14px 16px;
-    outline:none;
-    transition:border-color 0.15s ease;
-  }
-  .search-input::placeholder{color:var(--muted);}
-  .search-input:focus{border-color:var(--gold);}
-  .result-count{
-    font-size:13px;
-    color:var(--muted);
-    margin:10px 0 20px;
-  }
-
-  .section-title{
-    font-size:18px;
-    font-weight:700;
-    margin-bottom:16px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    color:var(--text-dark);
-  }
-  .file-count{
-    font-size:13px;
-    color:var(--muted);
-    font-weight:400;
-  }
-
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-    gap:16px;
-  }
-  .card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:20px;
-    text-decoration:none;
+  .hero h1 .underline{
     display:block;
-    color:var(--text-dark);
-    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    width:70px; height:4px; margin:14px auto 0;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--blue-mid), var(--blue-dark));
   }
-  .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 28px rgba(20,26,53,0.14);
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border-radius:999px; padding:10px 20px;
+    margin-top:20px; font-weight:700; font-size:13px; letter-spacing:1px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
   }
-  .file-icon{
-    width:48px;
-    height:48px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-    margin-bottom:14px;
-    background:var(--navy);
+  .badge .dot{
+    width:9px; height:9px; border-radius:50%; background:#22c55e;
   }
-  .file-tag{
-    display:inline-block;
-    font-family:'JetBrains Mono',monospace;
-    font-size:11px;
-    font-weight:500;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    color:var(--navy);
-    background:#eef1f6;
-    padding:3px 8px;
-    border-radius:6px;
-    margin-bottom:12px;
-  }
-  .file-tag.apk{
-    color:#c85a00;
-    background:#fff3e0;
-  }
-  .file-name{
-    font-size:17px;
-    font-weight:700;
-    margin-bottom:6px;
-    line-height:1.3;
-  }
-  .file-meta{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-    margin-bottom:18px;
-  }
-  .download-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    width:100%;
-    justify-content:center;
-    background:var(--navy);
-    color:#fff;
-    font-weight:600;
-    font-size:14px;
-    border-radius:10px;
-    text-decoration:none;
-    padding:11px 0;
-    transition:background 0.15s ease;
-    border:none;
-    cursor:pointer;
-  }
-  .download-btn:hover{background:var(--red);}
-  .empty{
-    color:var(--muted);
-    font-size:14px;
-    padding:24px;
-    border:1px dashed var(--border);
-    border-radius:12px;
-    text-align:center;
+  .hero p.tagline{
+    margin-top:20px; color:var(--text-muted); font-size:16px; line-height:1.5;
   }
 
-  /* Links */
-  .links-box{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:14px;
+  /* Social row */
+  .social-row{
+    display:flex; justify-content:center; gap:16px; margin-top:24px;
   }
-  .link-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:18px 20px;
-    border-bottom:1px solid var(--border);
-    gap:12px;
+  .social-row a{
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; color:#fff; text-decoration:none;
   }
-  .link-row:last-child{border-bottom:none;}
-  .link-name{
-    font-weight:700;
-    font-size:16px;
-    margin-bottom:4px;
-    color:var(--text-dark);
-  }
-  .link-desc{
-    font-family:'JetBrains Mono',monospace;
-    font-size:12px;
-    color:var(--muted);
-  }
-  .open-btn{
-    flex-shrink:0;
-    border:1.5px solid var(--navy);
-    color:var(--navy);
-    background:none;
-    border-radius:8px;
-    font-weight:700;
-    font-size:13px;
-    padding:9px 18px;
-    text-decoration:none;
-    white-space:nowrap;
-    transition:background 0.15s ease, color 0.15s ease;
-  }
-  .open-btn:hover{background:var(--navy);color:#fff;}
+  .s-search{ background:#fff; color:var(--blue-dark); box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+  .s-wa{ background:#25d366; }
+  .s-contact{ background:#5b6cf5; }
 
-  footer{
-    text-align:center;
-    color:#6b7280;
-    font-size:13px;
-    padding:32px 24px;
-    border-top:1px solid var(--navy-light);
+  /* Stats */
+  .stats{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+    padding:32px 16px 8px;
+  }
+  .stat-card{
+    background:var(--card); border-radius:16px; padding:16px 6px;
+    text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.04);
+  }
+  .stat-card .num{ font-size:20px; font-weight:800; }
+  .stat-card .label{ font-size:11px; color:var(--text-muted); margin-top:4px; letter-spacing:0.5px;}
+  .num.blue{color:var(--blue-mid);} .num.green{color:#16a34a;}
+  .num.purple{color:#9333ea;} .num.orange{color:#f59e0b;}
+
+  /* Search bar */
+  .search-wrap{
+    display:flex; align-items:center; gap:10px;
+    background:#fff; border-radius:999px; padding:14px 20px;
+    margin:24px 16px; box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .search-wrap input{
+    border:none; outline:none; flex:1; font-size:15px; background:transparent;
+  }
+  .search-wrap select{
+    border:none; background:transparent; font-weight:600; font-size:14px; outline:none;
   }
 
-  .about-section{
-    background:var(--navy-light);
-    padding:56px 24px;
+  /* Category cards */
+  .section-title{
+    padding:8px 20px 12px; font-weight:700; font-size:15px; color:var(--blue-dark);
   }
-  .about-inner{
-    max-width:700px;
-    margin:0 auto;
-    text-align:center;
+  .item-card{
+    display:flex; align-items:center; gap:14px;
+    background:#fff; margin:10px 16px; padding:14px; border-radius:16px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04); text-decoration:none; color:inherit;
   }
-  .about-title{
-    font-size:clamp(22px,4vw,30px);
-    font-weight:800;
-    margin-bottom:24px;
-    color:var(--gold);
+  .item-card img{
+    width:56px; height:56px; border-radius:12px; object-fit:cover; background:#e5e7eb;
   }
-  .about-inner p{
-    color:#4b5160;
-    font-size:15px;
-    line-height:1.8;
-    margin-bottom:18px;
+  .item-card .info h3{ font-size:15px; font-weight:700; }
+  .item-card .info p{ font-size:12px; color:var(--text-muted); margin-top:2px;}
+
+  /* Detailed product card */
+  .product-card{
+    background:#fff; margin:16px; border-radius:20px; padding:18px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
   }
-  .about-inner p:last-child{margin-bottom:0;}
-  .about-inner b{color:var(--gold);font-weight:600;}
+  .product-card .p-head{
+    display:flex; align-items:center; gap:14px; margin-bottom:14px;
+  }
+  .product-card .p-head img{
+    width:64px; height:64px; border-radius:14px; object-fit:cover; background:#e5e7eb;
+  }
+  .product-card .p-head h3{ font-size:17px; font-weight:700; }
+  .product-card .p-head p{ font-size:13px; color:var(--text-muted); margin-top:2px;}
+  .product-card .p-banner{
+    width:100%; border-radius:14px; aspect-ratio:16/9; object-fit:cover;
+    background:#dbeafe; margin-bottom:14px;
+  }
+  .product-card .p-tags{ display:flex; gap:8px; margin-bottom:12px; }
+  .p-tags span{
+    font-size:12px; font-weight:700; padding:5px 12px; border-radius:999px;
+  }
+  .tag-version{ background:#dbeafe; color:var(--blue-mid); }
+  .tag-free{ background:#dcfce7; color:#16a34a; }
+  .product-card .p-desc{ font-size:14px; color:#374151; line-height:1.5; margin-bottom:16px;}
+  .p-download{
+    display:block; width:100%; text-align:center; padding:15px;
+    background:var(--blue-mid); color:#fff; font-weight:700; font-size:15px;
+    border-radius:14px; text-decoration:none; border:none; cursor:pointer;
+  }
+
+  /* Bottom nav */
+  .bottom-nav{
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    background:#fff; border-radius:999px; display:flex; gap:36px;
+    padding:14px 32px; box-shadow:0 4px 20px rgba(0,0,0,0.12);
+  }
+  .bottom-nav a{
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; color:var(--text-dark); font-size:18px;
+  }
+  .bottom-nav a.active{ background:var(--blue-dark); color:#fff; }
+  .bottom-nav a.s-tg-nav{ color:#29a9eb; }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="eyebrow">File Locker</div>
-  <h1>Apni Files, <span>Ek Jagah.</span></h1>
-  <p>Notes, PDFs aur APKs — sab ek jagah, search karke turant dhoondo.</p>
-  <div class="contact-line">📞 Contact: <b>7808245695</b> — Surya Sunny</div>
-</header>
+  <header>
+    <div class="menu-icon">☰</div>
+    <div class="logo"><span class="plus">✛</span>SUNNY</div>
+    <div style="width:40px;"></div>
+  </header>
 
-<main>
-
-  <!-- Important Notices -->
-  <div class="notice-box">
-    <div class="notice-title">महत्वपूर्ण सूचना</div>
-    <div class="notice-body">
-      <ol>
-        <li>यह वेबसाइट सन्नी द्वारा सभी विद्यार्थियों व उपयोगकर्ताओं की सुविधा के लिए तैयार की गई है।</li>
-        <li>यहाँ उपलब्ध सभी फ़ाइलें केवल जानकारी व शैक्षणिक उपयोग हेतु साझा की जाती हैं।</li>
-        <li>नई फ़ाइलें समय-समय पर जोड़ी जाती रहेंगी — कृपया समय-समय पर पुनः देखें।</li>
-        <li>किसी भी फ़ाइल में समस्या हो तो सीधे संपर्क करें — 📞 7808245695</li>
-      </ol>
-    </div>
+  <div class="ticker-wrap">
+    <div class="ticker">🔥 NAYE NOTES HAR HAFTE ADD HOTE HAIN&nbsp;&nbsp;•&nbsp;&nbsp;📚 FREE PDF, APPS & IMPORTANT LINKS&nbsp;&nbsp;•&nbsp;&nbsp;📞 HELP: 7808245695&nbsp;&nbsp;•&nbsp;&nbsp;</div>
   </div>
 
-  <div class="global-search-wrap">
-    <input
-      type="text"
-      class="global-search-input"
-      id="globalSearch"
-      placeholder="🔍 Sab kuch search karo — apps, notes, links..."
-      oninput="globalFilter()"
-    >
-    <div class="global-result-count" id="globalResultCount"></div>
+  <section class="hero">
+    <h1>Sunny<span class="underline"></span></h1>
+    <div class="badge"><span class="dot"></span> FILES UPDATED — LIVE</div>
+    <p class="tagline">Notes, PDFs aur Apps — sab ek jagah.<br>Search karo, turant download karo.</p>
+
+    <div class="social-row">
+      <a class="s-search" href="#search" title="Search">🔍</a>
+      <a class="s-wa" href="https://wa.me/917808245695" title="WhatsApp" target="_blank">
+        <svg viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.362.687 4.564 1.872 6.417L4 29l7.75-1.83A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.6c-1.94 0-3.75-.55-5.29-1.5l-.38-.23-4.6 1.09 1.12-4.48-.25-.4A9.53 9.53 0 0 1 5.4 15c0-5.85 4.76-10.6 10.604-10.6S26.6 9.15 26.6 15 21.85 24.6 16.004 24.6zm5.78-7.94c-.32-.16-1.87-.92-2.16-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.68.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.87-1.76-2.19-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.63s1.13 3.05 1.29 3.26c.16.21 2.23 3.4 5.4 4.77.75.32 1.34.51 1.8.66.76.24 1.45.21 2 .13.61-.09 1.87-.76 2.13-1.5.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.6-.37z"/></svg>
+      </a>
+      <a class="s-contact" href="tel:7808245695" title="Contact">📞</a>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat-card"><div class="num blue">3+</div><div class="label">CATEGORY</div></div>
+    <div class="stat-card"><div class="num purple">24/7</div><div class="label">HELP</div></div>
+    <div class="stat-card"><div class="num orange">100%</div><div class="label">FREE</div></div>
   </div>
 
-  <!-- Tabs -->
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('apps')" id="tabBtnApps">📱 Apps/APK</button>
-    <button class="tab-btn" onclick="switchTab('links')" id="tabBtnLinks">🔗 Links</button>
-    <button class="tab-btn" onclick="switchTab('notes')" id="tabBtnNotes">📘 Notes/PDF</button>
+  <div class="search-wrap" id="search">
+    <span>🔍</span>
+    <input type="text" placeholder="Notes, Apps ya Links search karo...">
+    <select>
+      <option>All</option>
+      <option>Apps</option>
+      <option>Notes</option>
+      <option>Links</option>
+    </select>
   </div>
 
-  <!-- Apps Panel -->
-  <div class="tab-panel active" id="panelApps">
-
-    <div class="search-wrap">
-      <input
-        type="text"
-        class="search-input"
-        id="searchApps"
-        placeholder="App search karo..."
-        oninput="filterFiles('apps')"
-      >
-    </div>
-    <div class="result-count" id="countApps"></div>
-
-    <div class="section-title">
-      Register — Apps & APK
-      <span class="file-count" id="totalApps"></span>
-    </div>
-
-    <div class="grid" id="gridApps">
-
-      <a class="card" data-name="CapCut by Sunny"
-        href="download.html?name=CapCut%20by%20Sunny&type=APK&size=194%20MB&extra=Video%20Editor&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fci1f5fci03e60im%2FCapCut_by_sunny.apk%2Ffile">
-        <div class="file-icon">🎞️</div>
-        <span class="file-tag apk">APK</span>
-        <div class="file-name">CapCut by Sunny</div>
-        <div class="file-meta">194 MB · Video Editor</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-
-      <a class="card" data-name="Remini by Sunny"
-        href="download.html?name=Remini%20by%20Sunny&type=APK&size=153%20MB&extra=Photo%20Enhancer&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Fcx55ibpp0e8prtg%2FRemini_by_Sunny.apk%2Ffile">
-        <div class="file-icon">✨</div>
-        <span class="file-tag apk">APK</span>
-        <div class="file-name">Remini by Sunny</div>
-        <div class="file-meta">153 MB · Photo Enhancer</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-
-      <a class="card" data-name="YouTube by Sunny"
-        href="download.html?name=YouTube%20by%20Sunny&type=APK&size=21%20MB&extra=Video%20App&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2F53s53a02413z334%2Fyoutube_by_sunny.apk%2Ffile">
-        <div class="file-icon">▶️</div>
-        <span class="file-tag apk">APK</span>
-        <div class="file-name">YouTube by Sunny</div>
-        <div class="file-meta">21 MB · Video App</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-<a class="card" data-name="Subway Surfers MOD"
-   href="download.html?name=Subway%20Surfers%20MOD&type=APK&size=size%20MB&extra=v3.65.1%20%C2%B7%20Unlimited%20Coins%2FKeys&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Frmrgxztnu5umncy%2Fsubway-surfers-mod_3.65.1_an1.com.apk%2Ffile">
-    <div class="file-icon">🏃</div>
-    <span class="file-tag apk">APK</span>
-    <div class="file-name">Subway Surfers MOD</div>
-    <div class="file-meta">size MB · v3.65.1 · Unlimited Coins/Keys</div>
-    <span class="download-btn">View & Download</span>
-</a>
-      </a>
-
-      <a class="card" data-name="Free Cricket APK — Cricfy"
-        href="download.html?name=Free%20Cricket%20APK%20%E2%80%94%20Cricfy&type=APK&size=17%20MB&extra=v6.8%20%C2%B7%20Live%20Cricket&link=https%3A%2F%2Fwww.mediafire.com%2Ffile%2Ftl3ggfx54plxfcc%2FCricfy-v6.8-latest-cricfytvap.net.apk%2Ffile">
-        <div class="file-icon">🏏</div>
-        <span class="file-tag apk">APK</span>
-        <div class="file-name">Free Cricket APK — Cricfy</div>
-        <div class="file-meta">17 MB · v6.8 · Live Cricket</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-
-      <!-- Naya APK yahan add karo, is card ko copy karke -->
-
-    </div>
-
-    <div class="empty" id="emptyApps" style="display:none;">
-      Koi file match nahi hui. Kuch aur try karo.
-    </div>
-  </div>
-
-  <!-- Links Panel -->
-  <div class="tab-panel" id="panelLinks">
-
-    <div class="section-title">
-      Important Links
-      <span class="file-count" id="totalLinks"></span>
-    </div>
-
-    <div class="links-box" id="gridLinks">
-      <div class="link-row">
-        <div>
-          <div class="link-name">LNMU 2nd Semester</div>
-          <div class="link-desc">Student login portal</div>
-        </div>
-        <a href="#" class="open-btn">OPEN →</a>
+  <div class="section-title">📱 Apps</div>
+  <div class="product-card">
+    <div class="p-head">
+      <img src="" alt="">
+      <div>
+        <h3>YouTube by Sunny</h3>
+        <p>Video Streaming</p>
       </div>
-      <div class="link-row">
-        <div>
-          <div class="link-name">NSP Scholarship Portal</div>
-          <div class="link-desc">National Scholarship</div>
-        </div>
-        <a href="#" class="open-btn">OPEN →</a>
+    </div>
+    <img class="p-banner" src="" alt="preview">
+    <div class="p-tags">
+      <span class="tag-version">v19.0</span>
+      <span class="tag-free">Free</span>
+    </div>
+    <p class="p-desc">Background play, ads-free experience aur smooth streaming. Direct install, 45 MB.</p>
+    <a class="p-download" href="app-detail.html">Download</a>
+  </div>
+  <div class="product-card">
+    <div class="p-head">
+      <img src="" alt="">
+      <div>
+        <h3>CapCut by Sunny</h3>
+        <p>Video Editor</p>
       </div>
-      <!-- Naya link yahan add karo, is link-row ko copy karke -->
     </div>
+    <img class="p-banner" src="" alt="preview">
+    <div class="p-tags">
+      <span class="tag-version">v11.2</span>
+      <span class="tag-free">Free</span>
+    </div>
+    <p class="p-desc">Pro editing tools, templates aur effects — bina kisi watermark ke. 194 MB, direct install.</p>
+    <a class="p-download" href="#">Download</a>
+  </div>
+  <div class="product-card">
+    <div class="p-head">
+      <img src="" alt="">
+      <div>
+        <h3>Remini by Sunny</h3>
+        <p>Photo Enhancer</p>
+      </div>
+    </div>
+    <img class="p-banner" src="" alt="preview">
+    <div class="p-tags">
+      <span class="tag-version">v3.8</span>
+      <span class="tag-free">Free</span>
+    </div>
+    <p class="p-desc">Purani ya blur photos ko HD quality mein enhance karo, ek click mein. 153 MB.</p>
+    <a class="p-download" href="#">Download</a>
   </div>
 
-  <!-- Notes Panel -->
-  <div class="tab-panel" id="panelNotes">
-
-    <div class="search-wrap">
-      <input
-        type="text"
-        class="search-input"
-        id="searchNotes"
-        placeholder="Notes search karo..."
-        oninput="filterFiles('notes')"
-      >
+  <div class="section-title">📘 Notes / PDF</div>
+  <div class="product-card">
+    <div class="p-head">
+      <img src="" alt="">
+      <div>
+        <h3>Class 10 Maths — Full Notes</h3>
+        <p>Chapter-wise PDF</p>
+      </div>
     </div>
-    <div class="result-count" id="countNotes"></div>
-
-    <div class="section-title">
-      Register — Notes & PDF
-      <span class="file-count" id="totalNotes"></span>
+    <img class="p-banner" src="" alt="preview">
+    <div class="p-tags">
+      <span class="tag-version">v2.0</span>
+      <span class="tag-free">Free</span>
     </div>
+    <p class="p-desc">Poore syllabus ke handwritten notes, saare formulas aur solved examples ke saath. Exam-ready PDF, direct download.</p>
+    <a class="p-download" href="#">Download</a>
+  </div>
+  <a class="item-card" href="#">
+    <img src="" alt="">
+    <div class="info"><h3>Class 10 Maths — Full Notes</h3><p>4.2 MB · Hindi</p></div>
+  </a>
 
-    <div class="grid" id="gridNotes">
-
-      <a class="card" data-name="Class 10 Maths — Full Notes"
-        href="download.html?name=Class%2010%20Maths%20%E2%80%94%20Full%20Notes&type=PDF&size=4.2%20MB&extra=Hindi&link=%23">
-        <div class="file-icon">📘</div>
-        <span class="file-tag">PDF</span>
-        <div class="file-name">Class 10 Maths — Full Notes</div>
-        <div class="file-meta">4.2 MB · Hindi</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-
-      <a class="card" data-name="Indian Polity — Samvidhan Notes"
-        href="download.html?name=Indian%20Polity%20%E2%80%94%20Samvidhan%20Notes&type=PDF&size=2.8%20MB&extra=Hindi&link=%23">
-        <div class="file-icon">📘</div>
-        <span class="file-tag">PDF</span>
-        <div class="file-name">Indian Polity — Samvidhan Notes</div>
-        <div class="file-meta">2.8 MB · Hindi</div>
-        <span class="download-btn">View & Download</span>
-      </a>
-
-      <!-- Naya note yahan add karo, is card ko copy karke -->
-
+  <div class="section-title">🔗 Important Links</div>
+  <div class="product-card">
+    <div class="p-head">
+      <img src="" alt="">
+      <div>
+        <h3>LNMU 2nd Semester</h3>
+        <p>Student Login Portal</p>
+      </div>
     </div>
-
-    <div class="empty" id="emptyNotes" style="display:none;">
-      Koi file match nahi hui. Kuch aur try karo.
+    <div class="p-tags">
+      <span class="tag-version">Official</span>
+      <span class="tag-free">Free</span>
     </div>
+    <p class="p-desc">LNMU ka official student login page — result, admit card aur admission status check karo.</p>
+    <a class="p-download" href="#">Open Link</a>
   </div>
 
-</main>
-
-<div class="about-section">
-  <div class="about-inner">
-    <div class="about-title">यह वेबसाइट क्यों बनाई गई?</div>
-    <p>पढ़ाई के दौरान सही notes, ज़रूरी apps और काम की फ़ाइलें ढूँढना अक्सर मुश्किल हो जाता है। इसी परेशानी को दूर करने के लिए <b>"डाउनलोड घर"</b> बनाया गया है — एक जगह, जहाँ सब कुछ आसानी से मिल जाए।</p>
-    <p>यहाँ जो भी फ़ाइलें डाली जाती हैं, वो सन्नी द्वारा हाथ से चुनी और जोड़ी जाती हैं, ताकि सिर्फ काम की चीज़ें ही आपको मिलें — बेकार भरमार नहीं।</p>
+  <div class="bottom-nav">
+    <a class="active" href="#">🏠</a>
+    <a href="#" title="Request a file">📩</a>
   </div>
-</div>
-
-<footer>
-  © 2026 FileGhar — Sab files apni responsibility par download karein.
-</footer>
-
-<script>
-  function switchTab(tab){
-    document.getElementById('panelNotes').classList.toggle('active', tab === 'notes');
-    document.getElementById('panelApps').classList.toggle('active', tab === 'apps');
-    document.getElementById('panelLinks').classList.toggle('active', tab === 'links');
-    document.getElementById('tabBtnNotes').classList.toggle('active', tab === 'notes');
-    document.getElementById('tabBtnApps').classList.toggle('active', tab === 'apps');
-    document.getElementById('tabBtnLinks').classList.toggle('active', tab === 'links');
-  }
-
-  function filterFiles(type){
-    const searchId = type === 'notes' ? 'searchNotes' : 'searchApps';
-    const gridId = type === 'notes' ? 'gridNotes' : 'gridApps';
-    const emptyId = type === 'notes' ? 'emptyNotes' : 'emptyApps';
-    const countId = type === 'notes' ? 'countNotes' : 'countApps';
-
-    const query = document.getElementById(searchId).value.trim().toLowerCase();
-    const cards = document.querySelectorAll('#' + gridId + ' .card');
-    const emptyEl = document.getElementById(emptyId);
-    const countEl = document.getElementById(countId);
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-      const name = card.getAttribute('data-name').toLowerCase();
-      const match = name.includes(query);
-      card.style.display = match ? '' : 'none';
-      if(match) visibleCount++;
-    });
-
-    emptyEl.style.display = visibleCount === 0 ? 'block' : 'none';
-    countEl.textContent = query
-      ? visibleCount + ' file(s) mili "' + document.getElementById(searchId).value + '" ke liye'
-      : '';
-  }
-
-  function updateTotals(){
-    document.getElementById('totalNotes').textContent =
-      document.querySelectorAll('#gridNotes .card').length + ' files';
-    document.getElementById('totalApps').textContent =
-      document.querySelectorAll('#gridApps .card').length + ' files';
-    document.getElementById('totalLinks').textContent =
-      document.querySelectorAll('#gridLinks .link-row').length + ' links';
-  }
-  updateTotals();
-
-  function globalFilter(){
-    const query = document.getElementById('globalSearch').value.trim().toLowerCase();
-    const countEl = document.getElementById('globalResultCount');
-    const tabsEl = document.querySelector('.tabs');
-    let totalVisible = 0;
-
-    if(query === ''){
-      // Restore normal tab behavior
-      tabsEl.style.display = '';
-      document.querySelectorAll('.tab-panel').forEach(p => p.style.display = '');
-      switchTab('apps');
-      countEl.textContent = '';
-      // reset any per-tab search filters too
-      document.querySelectorAll('.card').forEach(c => c.style.display = '');
-      document.querySelectorAll('.link-row').forEach(r => r.style.display = '');
-      document.getElementById('emptyApps').style.display = 'none';
-      document.getElementById('emptyNotes').style.display = 'none';
-      return;
-    }
-
-    // Show all panels at once while searching
-    tabsEl.style.display = 'none';
-    document.querySelectorAll('.tab-panel').forEach(p => {
-      p.style.display = 'block';
-      p.classList.add('active');
-    });
-
-    document.querySelectorAll('#gridApps .card, #gridNotes .card').forEach(card => {
-      const name = card.getAttribute('data-name').toLowerCase();
-      const match = name.includes(query);
-      card.style.display = match ? '' : 'none';
-      if(match) totalVisible++;
-    });
-
-    document.querySelectorAll('#gridLinks .link-row').forEach(row => {
-      const name = row.querySelector('.link-name').textContent.toLowerCase();
-      const match = name.includes(query);
-      row.style.display = match ? '' : 'none';
-      if(match) totalVisible++;
-    });
-
-    document.getElementById('emptyApps').style.display =
-      document.querySelectorAll('#gridApps .card[style="display: none;"]').length === document.querySelectorAll('#gridApps .card').length ? 'block' : 'none';
-    document.getElementById('emptyNotes').style.display =
-      document.querySelectorAll('#gridNotes .card[style="display: none;"]').length === document.querySelectorAll('#gridNotes .card').length ? 'block' : 'none';
-
-    countEl.textContent = totalVisible + ' result(s) mile "' + document.getElementById('globalSearch').value + '" ke liye';
-  }
-</script>
 
 </body>
 </html>

@@ -306,10 +306,95 @@
   .bottom-nav a.active{ background:var(--blue-dark); color:#fff; }
   .bottom-nav a.s-tg-nav{ color:#29a9eb; }
 </style>
+
+  <style>
+    .youtube-card,.remini-card{cursor:pointer;}
+    .youtube-card:focus,.remini-card:focus{outline:2px solid var(--blue-mid);outline-offset:2px;}
+    .youtube-card .p-download,.remini-card .p-download{position:relative;z-index:2;}
+  </style>
+
+<style>
+/* Side menu + App Request */
+.menu-drawer{
+  position:fixed; inset:0; z-index:9999; visibility:hidden;
+  pointer-events:none;
+}
+.menu-drawer.open{visibility:visible;pointer-events:auto}
+.menu-overlay{
+  position:absolute;inset:0;background:rgba(15,23,42,.42);
+  opacity:0;transition:opacity .2s ease;
+}
+.menu-drawer.open .menu-overlay{opacity:1}
+.menu-panel{
+  position:absolute;top:0;left:0;width:min(330px,88vw);height:100%;
+  background:#fff;padding:22px 18px;box-shadow:8px 0 28px rgba(0,0,0,.15);
+  transform:translateX(-100%);transition:transform .25s ease;overflow:auto;
+}
+.menu-drawer.open .menu-panel{transform:translateX(0)}
+.menu-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.menu-title{font-size:21px;font-weight:900;color:var(--blue-dark)}
+.menu-close{
+  width:40px;height:40px;border:0;border-radius:12px;background:#f1f2f6;
+  font-size:20px;cursor:pointer;
+}
+.menu-item{
+  display:flex;align-items:center;gap:12px;width:100%;padding:14px;
+  margin-bottom:10px;border:1px solid #eef0f5;border-radius:14px;
+  background:#fff;color:var(--text-dark);text-decoration:none;font-weight:700;
+  cursor:pointer;text-align:left;
+}
+.menu-item-icon{
+  width:40px;height:40px;border-radius:12px;background:#dbeafe;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.request-box{
+  margin-top:18px;padding:16px;border-radius:18px;background:#f8fafc;
+  border:1px solid #e5e7eb;
+}
+.request-box h3{font-size:18px;color:var(--blue-dark);margin-bottom:6px}
+.request-box p{font-size:12px;color:var(--text-muted);line-height:1.45;margin-bottom:12px}
+.request-input{
+  width:100%;padding:13px 12px;border:1px solid #d1d5db;border-radius:12px;
+  outline:none;font-size:14px;background:#fff;
+}
+.request-input:focus{border-color:var(--blue-mid)}
+.request-btn{
+  display:block;width:100%;margin-top:10px;padding:13px;border:0;border-radius:12px;
+  background:#25d366;color:#fff;font-weight:800;font-size:14px;cursor:pointer;
+}
+</style>
+
 </head>
 <body>
+<div class="menu-drawer" id="menuDrawer" aria-hidden="true">
+  <div class="menu-overlay" onclick="closeMenu()"></div>
+  <aside class="menu-panel" aria-label="Sunny menu">
+    <div class="menu-top">
+      <div class="menu-title">☰ Sunny Menu</div>
+      <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
+    </div>
+
+    <a class="menu-item" href="#notes-section" onclick="closeMenu();showCategory('notes')">
+      <span class="menu-item-icon">📘</span> Notes / PDF
+    </a>
+    <a class="menu-item" href="#apps-section" onclick="closeMenu();showCategory('apps')">
+      <span class="menu-item-icon">📱</span> Apps
+    </a>
+    <a class="menu-item" href="#links-section" onclick="closeMenu();showCategory('links')">
+      <span class="menu-item-icon">🔗</span> Important Links
+    </a>
+
+    <div class="request-box">
+      <h3>📩 Request an App</h3>
+      <p>Agar aapko koi app chahiye, app ka naam neeche likho aur mujhe WhatsApp par request bhejo.</p>
+      <input class="request-input" id="appRequest" type="text" placeholder="Jaise: Remini, CapCut..." autocomplete="off">
+      <button class="request-btn" onclick="sendAppRequest()">💬 Send Request on WhatsApp</button>
+    </div>
+  </aside>
+</div>
+
 <header>
-<div class="menu-icon">☰</div>
+<div class="menu-icon" onclick="openMenu()" role="button" tabindex="0" aria-label="Open menu" onkeydown="if(event.key==='Enter'||event.key===' ')openMenu()">☰</div>
 <div class="logo"><span class="plus">✛</span>SUNNY</div>
 <div style="width:40px;"></div>
 </header>
@@ -399,7 +484,7 @@
 </div>
 <div class="cat-panel" id="apps-panel" style="display:none;">
 <div class="section-title" id="apps-section">📱 Apps</div>
-<div class="product-card youtube-card">
+<div class="product-card youtube-card" role="link" tabindex="0" onclick="openAppPage('app-detail-youtube.html')" onkeydown="if(event.key==='Enter'||event.key===' ')openAppPage('app-detail-youtube.html')">
 <div class="p-head">
 <div class="youtube-app-icon">▶</div>
 <div><h3>YouTube by Sunny</h3><p>Video Streaming</p></div>
@@ -416,7 +501,7 @@
 <p class="p-desc">YouTube Premium — ads-free experience, background playback aur smooth streaming.</p>
 <a class="p-download" href="youtube-by-sunny.html">Download</a>
 </div>
-<div class="product-card">
+<div class="product-card"><div class="product-card">
 <div class="p-head">
 <img alt="" src=""/>
 <div>
@@ -432,12 +517,12 @@
 <p class="p-desc">Pro editing tools, templates aur effects — bina kisi watermark ke. 194 MB, direct install.</p>
 <a class="p-download" href="#">Download</a>
 </div>
-<div class="product-card remini-card">
+<div class="product-card remini-card" role="link" tabindex="0" onclick="openAppPage('app-detail-remini.html')" onkeydown="if(event.key==='Enter'||event.key===' ')openAppPage('app-detail-remini.html')">
 <div class="p-head"><div class="remini-app-icon">R</div><div><h3>Remini by Sunny</h3><p>AI Photo Enhancer</p></div></div>
 <div class="remini-preview"><div class="remini-preview-left"><div class="preview-label">AI PHOTO ENHANCER</div><div class="preview-title">Old &amp; Blurry Photos<br/>to HD Quality</div><div class="preview-sub">Enhance • Restore • Sharpen</div></div><div class="remini-preview-art"><div class="photo-box before">Before</div><div class="photo-arrow">→</div><div class="photo-box after">After</div></div></div>
 <div class="p-tags"><span class="tag-version">Remini</span><span class="tag-free">Official</span></div>
 <p class="p-desc">Purani, blurry aur low-quality photos ko AI se enhance karne ke liye Remini. Face Enhance, Auto Color, Background Enhance aur video enhancement jaise tools.</p>
-<a class="p-download" href="https://remini.ai/" rel="noopener" target="_blank">Download</a>
+<a class="p-download" href="app-detail-remini.html">Download</a>
 </div>
 <div class="cat-panel" id="links-panel" style="display:none;">
 <div class="section-title" id="links-section">🔗 Important Links</div>
@@ -462,6 +547,35 @@
 <a href="https://wa.me/917808245695?text=Hi%20Sunny%2C%20mujhe%20ye%20chahiye%3A%20" target="_blank" title="Request a file">🙋</a>
 </div>
 <script>
+
+    function openMenu(){
+      var drawer = document.getElementById('menuDrawer');
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden','false');
+    }
+    function closeMenu(){
+      var drawer = document.getElementById('menuDrawer');
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden','true');
+    }
+    function sendAppRequest(){
+      var input = document.getElementById('appRequest');
+      var app = input.value.trim();
+      if(!app){
+        input.focus();
+        return;
+      }
+      var msg = 'Hi Sunny, mujhe "' + app + '" app chahiye. Please available ho to bata dena.';
+      window.open('https://wa.me/917808245695?text=' + encodeURIComponent(msg), '_blank');
+    }
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeMenu();
+    });
+
+    function openAppPage(url){
+      window.location.href = url;
+    }
+
     function showCategory(cat){
       document.getElementById('notes-panel').style.display = (cat === 'notes') ? '' : 'none';
       document.getElementById('apps-panel').style.display = (cat === 'apps') ? '' : 'none';

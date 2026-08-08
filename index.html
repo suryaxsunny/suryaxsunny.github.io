@@ -125,6 +125,30 @@
     border:none; background:transparent; font-weight:600; font-size:14px; outline:none;
   }
 
+  /* Category tabs row */
+  .tabs-row{
+    display:flex; gap:12px; padding:4px 16px 8px;
+  }
+  .tabs-row a{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    background:#fff; border-radius:16px; padding:16px 6px;
+    font-weight:700; font-size:12px; color:var(--blue-dark);
+    text-decoration:none; box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    border:1px solid #eef0f5;
+  }
+  .tabs-row a .tab-icon{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .tabs-row a.tab-notes .tab-icon{ background:#dbeafe; }
+  .tabs-row a.tab-apps .tab-icon{ background:#fef3c7; }
+  .tabs-row a.tab-links .tab-icon{ background:#dcfce7; }
+  .tabs-row a.tab-active{
+    background:var(--blue-dark); color:#fff;
+    box-shadow:0 4px 14px rgba(26,43,109,0.3);
+  }
+  .tabs-row a.tab-active .tab-icon{ background:rgba(255,255,255,0.2); }
+
   /* Category cards */
   .section-title{
     padding:8px 20px 12px; font-weight:700; font-size:15px; color:var(--blue-dark);
@@ -150,6 +174,11 @@
   }
   .product-card .p-head img{
     width:64px; height:64px; border-radius:14px; object-fit:cover; background:#e5e7eb;
+  }
+  .product-card .p-head .p-icon{
+    width:64px; height:64px; border-radius:14px;
+    background:linear-gradient(135deg, var(--blue-mid), var(--blue-dark));
+    display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0;
   }
   .product-card .p-head h3{ font-size:17px; font-weight:700; }
   .product-card .p-head p{ font-size:13px; color:var(--text-muted); margin-top:2px;}
@@ -227,7 +256,34 @@
     </select>
   </div>
 
-  <div class="section-title">📱 Apps</div>
+  <div class="tabs-row">
+    <a class="tab-notes tab-active" href="#notes-section"><span class="tab-icon">📘</span>Notes</a>
+    <a class="tab-apps" href="#apps-section"><span class="tab-icon">📱</span>Apps</a>
+    <a class="tab-links" href="#links-section"><span class="tab-icon">🔗</span>Links</a>
+  </div>
+
+  <div class="cat-panel" id="notes-panel">
+  <div class="section-title" id="notes-section">📘 Notes / PDF</div>
+  <div class="product-card">
+    <div class="p-head">
+      <div class="p-icon">🦠</div>
+      <div>
+        <h3>Class 8 Science — सूक्ष्मजीव: मित्र एवं शत्रु</h3>
+        <p>Chapter 2 — Full Notes</p>
+      </div>
+    </div>
+    <img class="p-banner" src="" alt="preview">
+    <div class="p-tags">
+      <span class="tag-version">v1.0</span>
+      <span class="tag-free">Free</span>
+    </div>
+    <p class="p-desc">Chapter 2 ke saare important topics aur definitions saral Hindi mein. Exam-ready PDF, direct download.</p>
+    <a class="p-download" href="class8-science-ch2.html">Download</a>
+  </div>
+  </div>
+
+  <div class="cat-panel" id="apps-panel" style="display:none;">
+  <div class="section-title" id="apps-section">📱 Apps</div>
   <div class="product-card">
     <div class="p-head">
       <img src="" alt="">
@@ -267,18 +323,6 @@
         <h3>Remini by Sunny</h3>
         <p>Photo Enhancer</p>
       </div>
-          <img class="p-banner" src="" alt="preview">
-    <div class="p-tags">
-      <span class="tag-version">v2.0</span>
-      <span class="tag-free">Free</span>
-    </div>
-    <p class="p-desc">Poore syllabus ke handwritten notes, saare formulas aur solved examples ke saath. Exam-ready PDF, direct download.</p>
-    <a class="p-download" href="maths-download.html">Download</a>
-  </div>
-  <a class="item-card" href="maths-download.html">
-    <img src="" alt="">
-    <div class="info"><h3>Class 10 Maths — Full Notes</h3><p>4.2 MB · Hindi</p></div>
-  </a>
     </div>
     <img class="p-banner" src="" alt="preview">
     <div class="p-tags">
@@ -288,30 +332,10 @@
     <p class="p-desc">Purani ya blur photos ko HD quality mein enhance karo, ek click mein. 153 MB.</p>
     <a class="p-download" href="#">Download</a>
   </div>
-
-  <div class="section-title">📘 Notes / PDF</div>
-  <div class="product-card">
-    <div class="p-head">
-      <img src="" alt="">
-      <div>
-        <h3>Class 10 Maths — Full Notes</h3>
-        <p>Chapter-wise PDF</p>
-      </div>
-    </div>
-    <img class="p-banner" src="" alt="preview">
-    <div class="p-tags">
-      <span class="tag-version">v2.0</span>
-      <span class="tag-free">Free</span>
-    </div>
-    <p class="p-desc">Poore syllabus ke handwritten notes, saare formulas aur solved examples ke saath. Exam-ready PDF, direct download.</p>
-    <a class="p-download" href="maths-download.html">Download</a>
   </div>
-  <a class="item-card" href="maths-download.html">
-    <img src="" alt="">
-    <div class="info"><h3>Class 10 Maths — Full Notes</h3><p>4.2 MB · Hindi</p></div>
-  </a>
 
-  <div class="section-title">🔗 Important Links</div>
+  <div class="cat-panel" id="links-panel" style="display:none;">
+  <div class="section-title" id="links-section">🔗 Important Links</div>
   <div class="product-card">
     <div class="p-head">
       <img src="" alt="">
@@ -327,11 +351,31 @@
     <p class="p-desc">LNMU ka official student login page — result, admit card aur admission status check karo.</p>
     <a class="p-download" href="#">Open Link</a>
   </div>
+  </div>
 
   <div class="bottom-nav">
     <a class="active" href="#">🏠</a>
-    <a href="#" title="Request a file">📩</a>
+    <a href="https://wa.me/917808245695?text=Hi%20Sunny%2C%20mujhe%20ye%20chahiye%3A%20" title="Request a file" target="_blank">🙋</a>
   </div>
+
+  <script>
+    function showCategory(cat){
+      document.getElementById('notes-panel').style.display = (cat === 'notes') ? '' : 'none';
+      document.getElementById('apps-panel').style.display = (cat === 'apps') ? '' : 'none';
+      document.getElementById('links-panel').style.display = (cat === 'links') ? '' : 'none';
+
+      document.querySelectorAll('.tabs-row a').forEach(function(a){ a.classList.remove('tab-active'); });
+      document.querySelector('.tab-' + cat).classList.add('tab-active');
+    }
+
+    document.querySelectorAll('.tabs-row a').forEach(function(a){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var cat = this.classList.contains('tab-notes') ? 'notes' : this.classList.contains('tab-apps') ? 'apps' : 'links';
+        showCategory(cat);
+      });
+    });
+  </script>
 
 </body>
 </html>

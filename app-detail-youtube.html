@@ -1,29 +1,191 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube by Sunny — Sunny Apps</title>
+<title>YouTube by Sunny</title>
 <style>
-:root{--blue-dark:#1a2b6d;--blue-mid:#2563eb;--bg:#f4f5f9;--card:#fff;--text-dark:#111827;--text-muted:#6b7280}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text-dark);padding-bottom:100px}
-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff}.icon-box{width:40px;height:40px;border-radius:12px;background:#f1f2f6;display:flex;align-items:center;justify-content:center;font-size:20px}.logo{font-weight:800;font-size:20px;color:var(--blue-dark)}.logo span{color:var(--blue-mid);font-size:22px}
-.breadcrumb{padding:16px 20px 4px;font-size:14px;color:var(--text-muted)}.top-info{padding:20px 20px 0}.app-icon{width:100px;height:100px;border-radius:24px;background:linear-gradient(135deg,#ff0033,#ff4d6d);display:flex;align-items:center;justify-content:center;color:#fff;font-size:48px;margin-bottom:16px;box-shadow:0 8px 20px rgba(255,0,51,.18)}
-h1{font-size:26px;font-weight:800;margin-bottom:12px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.tags span{font-size:13px;font-weight:700;padding:8px 16px;border-radius:999px}.tag-a{background:#dbeafe;color:var(--blue-mid)}.tag-b{background:#fee2e2;color:#dc2626}.tag-c{background:#dcfce7;color:#16a34a}
-.section-head{padding:0 20px 12px}.section-head h2{font-size:17px;font-weight:800}.preview{margin:0 16px 20px;border-radius:20px;aspect-ratio:16/9;background:linear-gradient(135deg,#ff0033,#ff4d6d 55%,#1a2b6d);display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px}.preview .big{font-size:58px;margin-bottom:8px}.preview h3{font-size:20px}.preview p{font-size:13px;opacity:.92;margin-top:5px}
-.card,.download-card{background:#fff;margin:16px;border-radius:20px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}.card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}.card-head .mini{width:34px;height:34px;border-radius:50%;background:#fee2e2;display:flex;align-items:center;justify-content:center}.card h4{font-size:17px;font-weight:800}.card p{font-size:14px;color:#374151;line-height:1.6}.card ul{list-style:none}.card li{display:flex;gap:10px;padding:8px 0;font-size:14px;color:#374151}.check{width:22px;height:22px;border-radius:50%;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
-.download-card{padding:22px}.download-card h3{font-size:19px;font-weight:800;margin-bottom:10px}.download-card p{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:20px}.download-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:999px;background:linear-gradient(90deg,#ff0033,#ff4d6d);color:#fff;font-weight:800;font-size:16px;text-decoration:none}
-.bottom-nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#fff;border-radius:999px;display:flex;gap:36px;padding:14px 32px;box-shadow:0 4px 20px rgba(0,0,0,.12)}.bottom-nav a{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-dark);font-size:18px}.bottom-nav a.active{background:var(--blue-dark);color:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue-dark:#1a2b6d;
+  --blue-mid:#2563eb;
+  --blue-light:#38bdf8;
+  --bg:#f4f5f9;
+  --card:#fff;
+  --text:#111827;
+  --muted:#6b7280;
+}
+body{
+  font-family:"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--text);
+  padding-bottom:40px;
+}
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;background:#fff;
+}
+.menu,.library{
+  width:40px;height:40px;border-radius:12px;background:#f1f2f6;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.logo{display:flex;align-items:center;gap:6px;font-size:20px;font-weight:800;color:var(--blue-dark)}
+.logo span{color:var(--blue-mid);font-size:22px}
+.wrap{max-width:720px;margin:auto;padding:0 0 30px}
+.hero{
+  text-align:center;padding:34px 16px 20px;
+}
+.app-icon{
+  width:76px;height:76px;margin:0 auto 14px;border-radius:20px;
+  background:linear-gradient(145deg,#ff0033,#cc0000);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 18px rgba(204,0,0,.22);
+  color:#fff;font-size:37px;
+}
+.hero h1{font-size:29px;font-weight:900;color:var(--blue-dark)}
+.badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.badge{font-size:11px;font-weight:800;padding:6px 11px;border-radius:999px}
+.badge.blue{background:#dbeafe;color:#2563eb}
+.badge.green{background:#dcfce7;color:#16a34a}
+.badge.red{background:#fee2e2;color:#dc2626}
+.hero p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.5}
+
+.yt-preview{
+  margin:4px 16px 16px;border-radius:18px;overflow:hidden;
+  min-height:190px;
+  background:linear-gradient(135deg,#45000d,#d90429 55%,#ff4d6d);
+  color:#fff;display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:22px;
+  box-shadow:0 8px 22px rgba(220,38,38,.18);
+}
+.preview-left{flex:1}
+.preview-label{font-size:10px;font-weight:900;letter-spacing:1.5px;opacity:.85}
+.preview-title{font-size:25px;font-weight:900;line-height:1.12;margin-top:7px}
+.preview-sub{font-size:12px;margin-top:9px;opacity:.92}
+.youtube-mark{
+  width:104px;height:72px;border-radius:21px;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.22);flex-shrink:0;
+}
+.youtube-mark:after{
+  content:"";width:0;height:0;border-top:13px solid transparent;
+  border-bottom:13px solid transparent;border-left:21px solid #e0002b;
+  margin-left:5px;
+}
+
+.card{
+  background:#fff;margin:16px;border-radius:20px;padding:18px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.card h2{font-size:19px;font-weight:900;color:var(--blue-dark);margin-bottom:13px}
+.details{width:100%;display:block;border-radius:14px}
+.feature-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:9px;
+}
+.feature{
+  background:#f8fafc;border:1px solid #e5e7eb;border-radius:13px;
+  padding:12px;font-size:12px;line-height:1.35;
+}
+.feature strong{display:block;font-size:13px;margin-bottom:3px}
+.feature span{font-size:18px;margin-right:4px}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.info{
+  background:#f8fafc;border:1px solid #e5e7eb;border-radius:13px;
+  padding:12px;font-size:12px;line-height:1.4;
+}
+.info b{display:block;color:var(--blue-dark);margin-bottom:3px}
+
+.download-box{
+  margin-top:14px;padding:16px;border-radius:14px;
+  background:#ecfdf5;border:1px solid #bbf7d0;
+}
+.download-title{font-size:19px;font-weight:900;color:#166534}
+.download-note{font-size:12px;color:#4b5563;margin:4px 0 12px}
+.download-btn{
+  display:block;width:100%;text-align:center;padding:15px;
+  border-radius:13px;background:#16a34a;color:#fff;
+  text-decoration:none;font-weight:800;font-size:15px;
+}
+.install{
+  background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;
+  padding:15px;margin-top:14px;
+}
+.install h3{font-size:16px;color:#1d4ed8;margin-bottom:8px}
+.install p{font-size:13px;line-height:1.7;color:#374151}
+
+.channel{
+  margin-top:14px;padding:12px;border-radius:13px;
+  background:#f8fafc;border:1px solid #e5e7eb;
+  font-size:13px;line-height:1.5;
+}
+.channel b{color:#2563eb}
+
+@media(max-width:520px){
+  .yt-preview{min-height:175px;padding:18px}
+  .preview-title{font-size:21px}
+  .youtube-mark{width:88px;height:62px}
+  .feature-grid,.info-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
-<header><div class="icon-box">☰</div><div class="logo"><span>✛</span> SUNNY</div><div class="icon-box">📱</div></header>
-<div class="breadcrumb">🏠 Home <span>›</span> <b>Apps</b> <span>›</span> <b>YouTube by Sunny</b></div>
-<div class="top-info"><div class="app-icon">▶️</div><h1>YouTube by Sunny</h1><div class="tags"><span class="tag-a">v19.0</span><span class="tag-b">Video Streaming</span><span class="tag-c">Free</span></div></div>
-<div class="section-head"><h2>📱 App Preview</h2></div>
-<div class="preview"><div><div class="big">▶️</div><h3>YouTube by Sunny</h3><p>Simple, smooth aur clean video streaming experience</p></div></div>
-<div class="card"><div class="card-head"><div class="mini">ℹ️</div><h4>App Description</h4></div><p>YouTube by Sunny ek simple video streaming app page hai. Is section mein app ki basic information, features aur download option diya gaya hai.</p></div>
-<div class="card"><div class="card-head"><div class="mini">✅</div><h4>App Mein Kya Milega</h4></div><ul><li><span class="check">✓</span> Free video streaming</li><li><span class="check">✓</span> Latest version available</li><li><span class="check">✓</span> Works on all devices</li><li><span class="check">✓</span> Smooth video streaming interface</li><li><span class="check">✓</span> Clean aur simple design</li><li><span class="check">✓</span> Easy navigation</li></ul></div>
-<div class="download-card"><h3>Download YouTube by Sunny</h3><p>App ko download karne ke liye neeche button par tap karein. YouTube by Sunny ka APK download karne ke liye neeche button par tap karein.</p><a class="download-btn" href="https://www.mediafire.com/file/c4x37pyim0rm976/YouTube+Pro+(1).apk/file" target="_blank" rel="noopener">⬇ Download Now</a></div>
-<div class="bottom-nav"><a class="active" href="index_sunny_apps_updated.html">🏠</a><a href="https://wa.me/917808245695?text=Hi%20Sunny%2C%20mujhe%20YouTube%20by%20Sunny%20app%20chahiye%3A" target="_blank">📩</a></div>
-</body></html>
+
+<header class="header">
+  <div class="menu">☰</div>
+  <div class="logo"><span>✛</span>SUNNY</div>
+  <div class="library">📚</div>
+</header>
+
+<main class="wrap">
+
+<section class="hero">
+  <div class="app-icon">▶</div>
+  <h1>YouTube by Sunny</h1>
+  <div class="badges">
+    <span class="badge blue">Video Streaming</span>
+    <span class="badge blue">v21.31.525</span>
+    <span class="badge green">Premium Unlocked</span>
+  </div>
+  <p>YouTube Premium — ads-free experience, background playback aur smooth streaming.</p>
+</section>
+
+<section class="yt-preview">
+  <div class="preview-left">
+    <div class="preview-label">SUNNY • APP PREVIEW</div>
+    <div class="preview-title">YouTube<br>Premium</div>
+    <div class="preview-sub">v21.31.525 • Unlocked Subscription Version</div>
+  </div>
+  <div class="youtube-mark"></div>
+</section>
+
+
+
+<section class="card">
+  <h2>⭐ Features</h2>
+  <div class="feature-grid">
+    <div class="feature"><strong><span>🏆</span>Premium</strong>Paid features unlocked</div>
+    <div class="feature"><strong><span>⊘</span>No Ads</strong>Ad-free smooth experience</div>
+    <div class="feature"><strong><span>▶</span>Background Playback</strong>Background playback enabled</div>
+    <div class="feature"><strong><span>↘</span>Minimized Playback</strong>Minimized playback enabled</div>
+    <div class="feature"><strong><span>🔊</span>Volume & Brightness</strong>Controls enabled</div>
+    <div class="feature"><strong><span>🔗</span>External Browser</strong>Open links directly in external browser</div>
+    <div class="feature"><strong><span>◉</span>Languages</strong>Multiple languages available</div>
+    <div class="feature"><strong><span>⚡</span>Optimized</strong>Cleaned resources for fast loading</div>
+  </div>
+</section>
+
+<section class="card">
+  <div class="download-box">
+    <div class="download-title">⬇ Download YouTube Premium</div>
+    <div class="download-note"><b>Version:</b> v21.31.525 &nbsp;|&nbsp; <b>Requires:</b> Android 9.0 or higher</div>
+    <a class="download-btn" href="https://www.mediafire.com/file/c4x37pyim0rm976/YouTube_Pro_%25281%2529.apk/file" target="_blank" rel="noopener">⬇ Download APK (MediaFire)</a>
+  </div>
+
+  
+
+  
+</section>
+
+</main>
+</body>
+</html>

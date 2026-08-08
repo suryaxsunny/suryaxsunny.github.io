@@ -211,71 +211,6 @@
   }
   .bottom-nav a.active{ background:var(--blue-dark); color:#fff; }
   .bottom-nav a.s-tg-nav{ color:#29a9eb; }
-
-  /* Detail view (inline PDF detail pages) */
-  .detail-view{ display:none; }
-  .detail-back{
-    display:flex; align-items:center; gap:8px; padding:16px 20px 4px;
-    font-size:14px; font-weight:700; color:var(--blue-dark); cursor:pointer;
-  }
-  .detail-top{ padding:20px 20px 0; }
-  .detail-thumb{
-    width:100px; height:100px; border-radius:20px;
-    background:linear-gradient(135deg, var(--blue-mid), var(--blue-dark));
-    display:flex; align-items:center; justify-content:center; font-size:42px; color:#fff;
-    margin-bottom:16px;
-  }
-  .detail-title{ font-size:26px; font-weight:800; margin-bottom:12px; }
-  .detail-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
-  .detail-tags span{
-    font-size:13px; font-weight:700; padding:8px 16px; border-radius:999px;
-  }
-  .detail-section-head{
-    display:flex; justify-content:space-between; align-items:baseline;
-    padding:0 20px 12px;
-  }
-  .detail-section-head h2{ font-size:17px; font-weight:800; }
-  .detail-section-head span{ font-size:12px; color:var(--text-muted); }
-  .detail-carousel{
-    position:relative; margin:0 16px 20px; border-radius:20px; overflow:hidden;
-    aspect-ratio:16/9;
-    background:linear-gradient(135deg, #1a2b6d, #2563eb 60%, #38bdf8);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    text-align:center; color:#fff; padding:20px;
-  }
-  .detail-carousel .big{ font-size:44px; margin-bottom:10px; }
-  .detail-carousel h3{ font-size:18px; font-weight:700; }
-  .detail-carousel p{ font-size:13px; opacity:0.9; margin-top:4px; }
-  .detail-feature{
-    background:#fff; margin:16px; border-radius:20px; padding:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-  }
-  .detail-feature .fh{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
-  .detail-feature .fh .badge-icon{
-    width:34px; height:34px; border-radius:50%; background:#fef3c7;
-    display:flex; align-items:center; justify-content:center; font-size:18px;
-  }
-  .detail-feature .fh h4{ font-size:17px; font-weight:800; }
-  .detail-feature ul{ list-style:none; }
-  .detail-feature li{
-    display:flex; align-items:center; gap:10px; padding:8px 0; font-size:14px; color:#374151;
-  }
-  .detail-feature li .check{
-    width:22px; height:22px; border-radius:50%; background:#dcfce7; color:#16a34a;
-    display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;
-  }
-  .detail-download{
-    background:#fff; margin:16px; border-radius:20px; padding:22px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-  }
-  .detail-download h3{ font-size:19px; font-weight:800; margin-bottom:10px; }
-  .detail-download p{ font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:20px; }
-  .detail-download .dl-btn{
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    width:100%; padding:16px; border:none; border-radius:999px;
-    background:linear-gradient(90deg, var(--blue-mid), #7c3aed);
-    color:#fff; font-weight:800; font-size:16px; text-decoration:none;
-  }
 </style>
 </head>
 <body>
@@ -285,8 +220,6 @@
     <div class="logo"><span class="plus">✛</span>SUNNY</div>
     <div style="width:40px;"></div>
   </header>
-
-  <div id="main-view">
 
   <div class="ticker-wrap">
     <div class="ticker">🔥 NAYE NOTES HAR HAFTE ADD HOTE HAIN&nbsp;&nbsp;•&nbsp;&nbsp;📚 FREE PDF, APPS & IMPORTANT LINKS&nbsp;&nbsp;•&nbsp;&nbsp;📞 HELP: 7808245695&nbsp;&nbsp;•&nbsp;&nbsp;</div>
@@ -345,60 +278,27 @@
       <span class="tag-free">Free</span>
     </div>
     <p class="p-desc">Chapter 2 ke saare important topics aur definitions saral Hindi mein. Exam-ready PDF, direct download.</p>
-    <a class="p-download" href="javascript:void(0)" onclick="showDetail('class8-science-ch2')">Download</a>
+    <a class="p-download" href="class8-science-ch2.html">Download</a>
   </div>
-
-  <div class="product-card">
-    <div class="p-head">
-      <div class="p-icon">🧵</div>
-      <div>
-        <h3>Class 8 Science — संश्लेषित रेशे और प्लास्टिक</h3>
-        <p>Chapter 3 — Full Notes</p>
-      </div>
-    </div>
-    <img class="p-banner" src="" alt="preview">
-    <div class="p-tags">
-      <span class="tag-version">v1.0</span>
-      <span class="tag-free">Free</span>
-    </div>
-    <p class="p-desc">Chapter 3 ke saare important topics aur definitions saral Hindi mein. Exam-ready PDF, direct download.</p>
-    <a class="p-download" href="javascript:void(0)" onclick="showDetail('class8-science-ch3')">Download</a>
-  </div>
-  
-  div class="product-card">
-    <div class="p-head">
-      <div class="p-icon">🎮</div>
-      <div>
-        <h3>Class 8 chapter 4 </h3>
-        <p>Chapter 3 — Full Notes</p>
-      </div>
-    </div>
-    <img class="p-banner" src="" alt="preview">
-    <div class="p-tags">
-      <span class="tag-version">v1.0</span>
-      <span class="tag-free">Free</span>
-    </div>
-    <p class="p-desc">Chapter 3 ke saare important topics aur definitions saral Hindi mein. Exam-ready PDF, direct download.</p>
-    <a class="p-download" href="javascript:void(0)" onclick="showDetail('class8-science-ch3')">Download</a>
   </div>
 
   <div class="cat-panel" id="apps-panel" style="display:none;">
   <div class="section-title" id="apps-section">📱 Apps</div>
   <div class="product-card">
     <div class="p-head">
-      <img src="" alt="">
+      <div class="p-icon" aria-label="YouTube by Sunny icon">▶️</div>
       <div>
         <h3>YouTube by Sunny</h3>
-        <p>Video Streaming</p>
+        <p>Video Streaming App</p>
       </div>
     </div>
-    <img class="p-banner" src="" alt="preview">
+    <div class="p-banner" style="display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(135deg,#ff0033,#ff4d6d);">▶️</div>
     <div class="p-tags">
-      <span class="tag-version">v19.0</span>
+      <span class="tag-version">Latest</span>
       <span class="tag-free">Free</span>
     </div>
-    <p class="p-desc">Background play, ads-free experience aur smooth streaming. Direct install, 45 MB.</p>
-    <a class="p-download" href="app-detail.html">Download</a>
+    <p class="p-desc">Free video streaming, latest version aur all devices support. Smooth aur simple experience ke saath YouTube by Sunny.</p>
+    <a class="p-download" href="app-detail-youtube.html">Download</a>
   </div>
   <div class="product-card">
     <div class="p-head">
@@ -458,123 +358,6 @@
     <a href="https://wa.me/917808245695?text=Hi%20Sunny%2C%20mujhe%20ye%20chahiye%3A%20" title="Request a file" target="_blank">🙋</a>
   </div>
 
-  </div><!-- /#main-view -->
-
-  <!-- ================= DETAIL VIEWS ================= -->
-  <div class="detail-view" id="detail-view">
-
-    <!-- ---- Detail: class8-science-ch2 ---- -->
-    <div class="detail-page" id="detail-class8-science-ch2" style="display:none;">
-      <div class="detail-back" onclick="hideDetail()">← Back to Notes</div>
-      <div class="detail-top">
-        <div class="detail-thumb">🦠</div>
-        <h1 class="detail-title">सूक्ष्मजीव: मित्र एवं शत्रु</h1>
-        <div class="detail-tags">
-          <span class="tag-a">Class 8 · Chapter 2</span>
-          <span class="tag-b">Hindi</span>
-          <span class="tag-d">Free</span>
-        </div>
-      </div>
-      <div class="detail-section-head">
-        <h2>📖 Chapter Preview</h2>
-        <span>Swipe to see topics</span>
-      </div>
-      <div class="detail-carousel">
-        <div class="big">🦠</div>
-        <h3>सूक्ष्मजीव: मित्र एवं शत्रु</h3>
-        <p>Bacteria, virus, fungi aur unke labhkari/hanikarak prabhav</p>
-      </div>
-      <div class="detail-feature">
-        <div class="fh"><div class="badge-icon">✅</div><h4>PDF Mein Kya Milega</h4></div>
-        <ul>
-          <li><span class="check">✓</span> Poora chapter — saral Hindi bhasha mein</li>
-          <li><span class="check">✓</span> Important definitions highlighted</li>
-          <li><span class="check">✓</span> Diagrams — bacteria, virus, fungi</li>
-          <li><span class="check">✓</span> Labhkari evam hanikarak sukshmajeev</li>
-          <li><span class="check">✓</span> Exam-ready revision format</li>
-        </ul>
-      </div>
-      <div class="detail-download">
-        <h3>Download Chapter Notes</h3>
-        <p>Poora chapter ek hi PDF mein, revision ke liye ready — turant apne device mein download karo.</p>
-        <a class="dl-btn" href="https://www.mediafire.com/file/wl3j1127jv894qy/Sukshmjeev_Mitra_Notes.pdf/file" target="_blank">⬇ Download Now</a>
-      </div>
-    </div>
-
-    <!-- ---- Detail: class8-science-ch3 ---- -->
-    <div class="detail-page" id="detail-class8-science-ch3" style="display:none;">
-      <div class="detail-back" onclick="hideDetail()">← Back to Notes</div>
-      <div class="detail-top">
-        <div class="detail-thumb">🧵</div>
-        <h1 class="detail-title">संश्लेषित रेशे और प्लास्टिक</h1>
-        <div class="detail-tags">
-          <span class="tag-a">Class 8 · Chapter 3</span>
-          <span class="tag-b">Hindi</span>
-          <span class="tag-d">Free</span>
-        </div>
-      </div>
-      <div class="detail-section-head">
-        <h2>📖 Chapter Preview</h2>
-        <span>Swipe to see topics</span>
-      </div>
-      <div class="detail-carousel">
-        <div class="big">🧵</div>
-        <h3>संश्लेषित रेशे और प्लास्टिक</h3>
-        <p>Rayon, nylon, polyester, plastic ke prakar aur unke upyog</p>
-      </div>
-      <div class="detail-feature">
-        <div class="fh"><div class="badge-icon">✅</div><h4>PDF Mein Kya Milega</h4></div>
-        <ul>
-          <li><span class="check">✓</span> Poora chapter — saral Hindi bhasha mein</li>
-          <li><span class="check">✓</span> Important definitions highlighted</li>
-          <li><span class="check">✓</span> Sansleshit reshon ke prakar aur udaharan</li>
-          <li><span class="check">✓</span> Plastic ke labh aur haani</li>
-          <li><span class="check">✓</span> Exam-ready revision format</li>
-        </ul>
-      </div>
-      <div class="detail-download">
-        <h3>Download Chapter Notes</h3>
-        <p>Poora chapter ek hi PDF mein, revision ke liye ready — turant apne device mein download karo.</p>
-        <a class="dl-btn" href="https://www.mediafire.com/file/opmq5d6vpvmaaxl/Sanshleshit_Reshe_Aur_Plastic_Notes.pdf/file" target="_blank">⬇ Download Now</a>
-      </div>
-    </div>
-    <!-- ---- ID badlo aur details bharo. Neeche template comment mein hai. ---- -->
-    <!--
-    <div class="detail-page" id="detail-UNIQUE_ID" style="display:none;">
-      <div class="detail-back" onclick="hideDetail()">← Back to Notes</div>
-      <div class="detail-top">
-        <div class="detail-thumb">ICON</div>
-        <h1 class="detail-title">TITLE</h1>
-        <div class="detail-tags">
-          <span class="tag-a">CLASS · CHAPTER</span>
-          <span class="tag-b">Hindi</span>
-          <span class="tag-d">Free</span>
-        </div>
-      </div>
-      <div class="detail-section-head"><h2>📖 Chapter Preview</h2><span>Swipe to see topics</span></div>
-      <div class="detail-carousel">
-        <div class="big">ICON</div>
-        <h3>TITLE</h3>
-        <p>SHORT TAGLINE</p>
-      </div>
-      <div class="detail-feature">
-        <div class="fh"><div class="badge-icon">✅</div><h4>PDF Mein Kya Milega</h4></div>
-        <ul>
-          <li><span class="check">✓</span> FEATURE 1</li>
-          <li><span class="check">✓</span> FEATURE 2</li>
-          <li><span class="check">✓</span> FEATURE 3</li>
-        </ul>
-      </div>
-      <div class="detail-download">
-        <h3>Download Chapter Notes</h3>
-        <p>DESCRIPTION</p>
-        <a class="dl-btn" href="PDF_LINK" target="_blank">⬇ Download Now</a>
-      </div>
-    </div>
-    -->
-
-  </div>
-
   <script>
     function showCategory(cat){
       document.getElementById('notes-panel').style.display = (cat === 'notes') ? '' : 'none';
@@ -592,19 +375,6 @@
         showCategory(cat);
       });
     });
-
-    function showDetail(id){
-      document.getElementById('main-view').style.display = 'none';
-      document.getElementById('detail-view').style.display = 'block';
-      document.querySelectorAll('.detail-page').forEach(function(d){ d.style.display = 'none'; });
-      document.getElementById('detail-' + id).style.display = 'block';
-      window.scrollTo(0,0);
-    }
-    function hideDetail(){
-      document.getElementById('detail-view').style.display = 'none';
-      document.getElementById('main-view').style.display = 'block';
-      window.scrollTo(0,0);
-    }
   </script>
 
 </body>

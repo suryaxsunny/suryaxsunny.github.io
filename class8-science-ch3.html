@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class 8 Science — संश्लेषित रेशे और प्लास्टिक — Sunny Notes</title>
+<style>
+  :root{
+    --blue-dark:#1a2b6d;
+    --blue-mid:#2563eb;
+    --blue-light:#38bdf8;
+    --bg:#f4f5f9;
+    --card:#ffffff;
+    --text-dark:#111827;
+    --text-muted:#6b7280;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text-dark);
+    padding-bottom:100px;
+  }
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px; background:#fff;
+  }
+  .menu-icon, .bag-icon{
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    border-radius:12px; background:#f1f2f6; font-size:20px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:6px; font-weight:800; font-size:20px;
+    color:var(--blue-dark);
+  }
+  .logo span.plus{color:var(--blue-mid); font-size:22px;}
+
+  .breadcrumb{
+    padding:16px 20px 4px; font-size:14px; color:var(--text-muted);
+    display:flex; align-items:center; gap:6px;
+  }
+  .breadcrumb b{ color:var(--text-dark); }
+
+  .top-info{ padding:20px 20px 0; }
+  .thumb{
+    width:100px; height:100px; border-radius:20px;
+    background:linear-gradient(135deg, var(--blue-mid), var(--blue-dark));
+    display:flex; align-items:center; justify-content:center; font-size:42px; color:#fff;
+    margin-bottom:16px;
+  }
+  h1.title{ font-size:26px; font-weight:800; margin-bottom:12px; }
+  .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+  .tags span{
+    font-size:13px; font-weight:700; padding:8px 16px; border-radius:999px;
+  }
+  .tag-a{ background:#dbeafe; color:var(--blue-mid); }
+  .tag-b{ background:#fef3c7; color:#b45309; }
+  .tag-c{ background:#fee2e2; color:#dc2626; }
+  .tag-d{ background:#fef9c3; color:#a16207; }
+
+  .section-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:0 20px 12px;
+  }
+  .section-head h2{ font-size:17px; font-weight:800; }
+  .section-head span{ font-size:12px; color:var(--text-muted); }
+
+  .carousel-wrap{
+    position:relative; margin:0 16px 20px; border-radius:20px; overflow:hidden;
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg, #1a2b6d, #2563eb 60%, #38bdf8);
+  }
+  .carousel-wrap .slide-content{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; color:#fff; padding:20px;
+  }
+  .slide-content .big{ font-size:44px; margin-bottom:10px; }
+  .slide-content h3{ font-size:18px; font-weight:700; }
+  .slide-content p{ font-size:13px; opacity:0.9; margin-top:4px; }
+  .nav-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%; background:rgba(0,0,0,0.3);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .nav-arrow.left{ left:12px; } .nav-arrow.right{ right:12px; }
+
+  .feature-card{
+    background:#fff; margin:16px; border-radius:20px; padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .feature-card .fh{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .fh .badge-icon{
+    width:34px; height:34px; border-radius:50%; background:#fef3c7;
+    display:flex; align-items:center; justify-content:center; font-size:18px;
+  }
+  .fh h4{ font-size:17px; font-weight:800; }
+  .feature-card ul{ list-style:none; }
+  .feature-card li{
+    display:flex; align-items:center; gap:10px; padding:8px 0; font-size:14px; color:#374151;
+  }
+  .feature-card li .check{
+    width:22px; height:22px; border-radius:50%; background:#dcfce7; color:#16a34a;
+    display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;
+  }
+
+  .download-card{
+    background:#fff; margin:16px; border-radius:20px; padding:22px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  }
+  .download-card h3{ font-size:19px; font-weight:800; margin-bottom:10px; }
+  .download-card p{ font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:20px; }
+  .download-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%; padding:16px; border:none; border-radius:999px;
+    background:linear-gradient(90deg, var(--blue-mid), #7c3aed);
+    color:#fff; font-weight:800; font-size:16px; text-decoration:none;
+  }
+
+  .bottom-nav{
+    position:fixed; bottom:14px; left:50%; transform:translateX(-50%);
+    background:#fff; border-radius:999px; display:flex; gap:36px;
+    padding:14px 32px; box-shadow:0 4px 20px rgba(0,0,0,0.12);
+  }
+  .bottom-nav a{
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; color:var(--text-dark); font-size:18px;
+  }
+  .bottom-nav a.active{ background:var(--blue-dark); color:#fff; }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="menu-icon">☰</div>
+    <div class="logo"><span class="plus">✛</span>SUNNY</div>
+    <div class="bag-icon">📚</div>
+  </header>
+
+  <div class="breadcrumb">🏠 Home <span>›</span> <b>Notes / PDF</b></div>
+
+  <div class="top-info">
+    <div class="thumb">🧵</div>
+    <h1 class="title">संश्लेषित रेशे और प्लास्टिक</h1>
+    <div class="tags">
+      <span class="tag-a">Class 8 · Chapter 3</span>
+      <span class="tag-b">Hindi</span>
+      <span class="tag-d">Free</span>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>📖 Chapter Preview</h2>
+    <span>Swipe to see topics</span>
+  </div>
+  <div class="carousel-wrap">
+    <div class="nav-arrow left">‹</div>
+    <div class="slide-content">
+      <div class="big">🧵</div>
+      <h3>संश्लेषित रेशे और प्लास्टिक</h3>
+      <p>Synthetic fibres, plastics aur unke daily-life uses</p>
+    </div>
+    <div class="nav-arrow right">›</div>
+  </div>
+
+  <div class="feature-card">
+    <div class="fh">
+      <div class="badge-icon">✅</div>
+      <h4>PDF Mein Kya Milega</h4>
+    </div>
+    <ul>
+      <li><span class="check">✓</span> Poora chapter — saral Hindi bhasha mein</li>
+      <li><span class="check">✓</span> Important definitions highlighted</li>
+      <li><span class="check">✓</span> Synthetic fibres aur unke types</li>
+      <li><span class="check">✓</span> Plastics ke properties aur uses</li>
+      <li><span class="check">✓</span> Environmental impact aur exam-ready revision</li>
+    </ul>
+  </div>
+
+  <div class="download-card">
+    <h3>Download Chapter Notes</h3>
+    <p>Chapter 3 ke notes ek hi PDF mein, revision ke liye ready — turant apne device mein download karo.</p>
+    <a class="download-btn" href="https://www.mediafire.com/file/opmq5d6vpvmaaxl/Sanshleshit_Reshe_Aur_Plastic_Notes.pdf/file" target="_blank">⬇ Download Now</a>
+  </div>
+
+  <div class="bottom-nav">
+    <a class="active" href="#">🏠</a>
+    <a href="#" title="Request a file">📩</a>
+  </div>
+
+</body>
+</html>
